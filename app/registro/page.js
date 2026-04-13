@@ -23,37 +23,69 @@ export default function Registro() {
   }
 
   return (
-    <main className="min-h-screen bg-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
-        <h2 className="text-3xl font-bold text-blue-700 mb-2 text-center">Crear cuenta ✈️</h2>
-        <p className="text-center text-gray-400 mb-6">Únete a Triplo gratis</p>
+    <main className="relative min-h-screen flex items-center justify-center px-4 z-10">
 
-        {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
-        {mensaje && <p className="text-green-500 text-sm mb-4 text-center">{mensaje}</p>}
+      {/* Ambient orbs */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed top-[-200px] right-[-200px] w-[500px] h-[500px] rounded-full z-0"
+        style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.22) 0%, transparent 70%)', filter: 'blur(80px)' }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed bottom-[-200px] left-[-200px] w-[500px] h-[500px] rounded-full z-0"
+        style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.25) 0%, transparent 70%)', filter: 'blur(80px)' }}
+      />
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-        <input
-          type="password"
-          placeholder="Contraseña (mínimo 6 caracteres)"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-6 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+      <div className="glass rounded-3xl p-10 w-full max-w-md relative z-10">
+
+        {/* Logo */}
+        <div className="text-center mb-8">
+          <span className="text-4xl">🚀</span>
+          <h1 className="text-3xl font-bold gradient-text mt-2">Crear cuenta</h1>
+          <p className="text-white/50 text-sm mt-2">Únete a Triplo gratis</p>
+        </div>
+
+        {error && (
+          <div className="glass border border-red-500/30 rounded-xl px-4 py-3 mb-5 text-red-400 text-sm text-center">
+            {error}
+          </div>
+        )}
+        {mensaje && (
+          <div className="glass border border-emerald-500/30 rounded-xl px-4 py-3 mb-5 text-emerald-400 text-sm text-center">
+            {mensaje}
+          </div>
+        )}
+
+        <div className="space-y-4 mb-6">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            className="glass-input w-full rounded-xl px-4 py-3 text-sm"
+          />
+          <input
+            type="password"
+            placeholder="Contraseña (mínimo 6 caracteres)"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            className="glass-input w-full rounded-xl px-4 py-3 text-sm"
+          />
+        </div>
+
         <button
           onClick={handleRegistro}
-          className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 mb-4"
+          className="btn-cta w-full py-3 rounded-xl text-sm mb-5"
         >
-          Registrarse
+          Registrarse →
         </button>
-        <p className="text-center text-gray-400 text-sm">
+
+        <p className="text-center text-white/40 text-sm">
           ¿Ya tienes cuenta?{' '}
-          <Link href="/login" className="text-blue-600 hover:underline">Inicia sesión</Link>
+          <Link href="/login" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+            Inicia sesión
+          </Link>
         </p>
       </div>
     </main>

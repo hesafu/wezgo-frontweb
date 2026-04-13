@@ -13,48 +13,75 @@ export default function Login() {
   const [error, setError] = useState(null)
 
   async function handleLogin() {
-  const { error } = await supabase.auth.signInWithPassword({ email, password })
-  if (error) {
-    setError('Email o contraseña incorrectos')
-  } else {
-    toast.success('Bienvenido a Triplo! ✈️')
-    router.push('/dashboard')
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) {
+      setError('Email o contraseña incorrectos')
+    } else {
+      toast.success('Bienvenido a Triplo! ✈️')
+      router.push('/dashboard')
+    }
   }
-}
 
   return (
-    <main className="min-h-screen bg-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
-        <h2 className="text-3xl font-bold text-blue-700 mb-2 text-center">Bienvenido a Triplo ✈️</h2>
-        <p className="text-center text-gray-400 mb-6">Inicia sesión para ver tus viajes</p>
+    <main className="relative min-h-screen flex items-center justify-center px-4 z-10">
 
-        {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
+      {/* Ambient orbs */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed top-[-200px] left-[-200px] w-[500px] h-[500px] rounded-full z-0"
+        style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.22) 0%, transparent 70%)', filter: 'blur(80px)' }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed bottom-[-200px] right-[-200px] w-[500px] h-[500px] rounded-full z-0"
+        style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.25) 0%, transparent 70%)', filter: 'blur(80px)' }}
+      />
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 mb-6 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+      <div className="glass rounded-3xl p-10 w-full max-w-md relative z-10">
+
+        {/* Logo */}
+        <div className="text-center mb-8">
+          <span className="text-4xl">✈️</span>
+          <h1 className="text-3xl font-bold gradient-text mt-2">Bienvenido a Triplo</h1>
+          <p className="text-white/50 text-sm mt-2">Inicia sesión para ver tus viajes</p>
+        </div>
+
+        {error && (
+          <div className="glass border border-red-500/30 rounded-xl px-4 py-3 mb-5 text-red-400 text-sm text-center">
+            {error}
+          </div>
+        )}
+
+        <div className="space-y-4 mb-6">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            className="glass-input w-full rounded-xl px-4 py-3 text-sm"
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            className="glass-input w-full rounded-xl px-4 py-3 text-sm"
+          />
+        </div>
+
         <button
           onClick={handleLogin}
-          className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700"
+          className="btn-cta w-full py-3 rounded-xl text-sm mb-5"
         >
-          Entrar
+          Entrar →
         </button>
-        <p className="text-center text-gray-400 text-sm mt-4">
+
+        <p className="text-center text-white/40 text-sm">
           ¿No tienes cuenta?{' '}
-          <Link href="/registro" className="text-blue-600 hover:underline">Regístrate</Link>
+          <Link href="/registro" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+            Regístrate
+          </Link>
         </p>
-        
       </div>
     </main>
   )

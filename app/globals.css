@@ -1,3 +1,108 @@
 @import "tailwindcss";
-@import "tailwindcss";
-@source "../app";
+
+/* ─── Base Layer ─────────────────────────────────────────────────── */
+@layer base {
+  html, body {
+    background-color: #0a0f1c !important;
+    color: #f0f4ff;
+    min-height: 100vh;
+  }
+}
+
+/* ─── Ambient background orbs (body pseudo-elements) ───────────────── */
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  width: 600px;
+  height: 600px;
+  top: -180px;
+  left: -180px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.28) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+body::after {
+  width: 500px;
+  height: 500px;
+  bottom: -120px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.32) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+/* ─── Reusable glass utility ─────────────────────────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+/* ─── Gradient text ──────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #67e8f9 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── CTA button ─────────────────────────────────────────────────── */
+.btn-cta {
+  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+  transition: box-shadow 0.25s ease, transform 0.15s ease;
+}
+.btn-cta:hover {
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.7);
+}
+.btn-cta:active {
+  transform: scale(0.96);
+}
+
+/* ─── Ghost / secondary button ───────────────────────────────────── */
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #f0f4ff;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Glass input ────────────────────────────────────────────────── */
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f0f4ff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+.glass-input:focus {
+  border-color: rgba(6, 182, 212, 0.65);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+}
