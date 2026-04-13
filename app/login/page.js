@@ -23,59 +23,46 @@ export default function Login() {
   }
 
   return (
-    <main className="relative min-h-screen flex items-center justify-center px-4 z-10">
+    <main className="min-h-screen flex items-center justify-center px-4 relative">
+      {/* Extra glow behind the card */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-cyan-500/15 to-violet-500/15 blur-[100px] rounded-full pointer-events-none" aria-hidden="true" />
 
-      {/* Ambient orbs */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed top-[-200px] left-[-200px] w-[500px] h-[500px] rounded-full z-0"
-        style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.22) 0%, transparent 70%)', filter: 'blur(80px)' }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none fixed bottom-[-200px] right-[-200px] w-[500px] h-[500px] rounded-full z-0"
-        style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.25) 0%, transparent 70%)', filter: 'blur(80px)' }}
-      />
+      <div className="glass rounded-3xl p-10 w-full max-w-md animate-fade-in-up relative">
+        {/* Subtle top-edge highlight */}
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-t-3xl" aria-hidden="true" />
 
-      <div className="glass rounded-3xl p-10 w-full max-w-md relative z-10">
-
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <span className="text-4xl">✈️</span>
-          <h1 className="text-3xl font-bold gradient-text mt-2">Bienvenido a Triplo</h1>
-          <p className="text-white/50 text-sm mt-2">Inicia sesión para ver tus viajes</p>
-        </div>
+        <h2 className="text-3xl font-bold gradient-text mb-2 text-center">
+          Bienvenido a Triplo ✈️
+        </h2>
+        <p className="text-center text-white/40 mb-8">Inicia sesión para ver tus viajes</p>
 
         {error && (
-          <div className="glass border border-red-500/30 rounded-xl px-4 py-3 mb-5 text-red-400 text-sm text-center">
+          <div className="mb-4 px-4 py-2.5 rounded-xl text-sm text-center"
+               style={{ background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.25)', color: '#fca5a5' }}>
             {error}
           </div>
         )}
 
-        <div className="space-y-4 mb-6">
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            className="glass-input w-full rounded-xl px-4 py-3 text-sm"
-          />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            className="glass-input w-full rounded-xl px-4 py-3 text-sm"
-          />
-        </div>
-
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          className="glass-input w-full rounded-xl px-4 py-3 mb-4 text-sm"
+        />
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          className="glass-input w-full rounded-xl px-4 py-3 mb-6 text-sm"
+        />
         <button
           onClick={handleLogin}
-          className="btn-cta w-full py-3 rounded-xl text-sm mb-5"
+          className="btn-cta w-full py-3 rounded-xl text-base mb-5"
         >
-          Entrar →
+          Entrar
         </button>
-
         <p className="text-center text-white/40 text-sm">
           ¿No tienes cuenta?{' '}
           <Link href="/registro" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">

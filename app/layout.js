@@ -20,10 +20,24 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col" style={{ backgroundColor: '#0a0f1c', color: '#f0f4ff' }}>
-        <Toaster position="top-right" />
-        {children}
+      <body className="noise-overlay min-h-full flex flex-col" style={{ backgroundColor: '#0a0f1c', color: '#f0f4ff' }}>
+        {/* Extra ambient orb for richer background */}
+        <div className="ambient-orb-extra" aria-hidden="true" />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: 'rgba(15, 23, 42, 0.9)',
+              color: '#f0f4ff',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(12px)',
+            },
+          }}
+        />
+        <div className="relative z-10 flex flex-col min-h-full">
+          {children}
+        </div>
       </body>
-    </html >
+    </html>
   );
 }
