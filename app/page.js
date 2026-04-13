@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image' // 1. Añadida la importación que faltaba
 
 export default function Home() {
   return (
@@ -59,13 +60,14 @@ export default function Home() {
             Documentation
           </a>
         </div>
-      </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="relative z-10 text-center py-8 text-white/30 text-sm border-t border-white/8">
-        © 2026 Triplo — Triplo Mobile S.L.
-      </footer>
+        {/* 2. Se eliminó la etiqueta </section> que sobraba aquí */}
 
-    </main>
+        {/* ── FOOTER ── */}
+        <footer className="relative z-10 text-center py-8 text-white/30 text-sm border-t border-white/8">
+          © 2026 Triplo — Triplo Mobile S.L.
+        </footer>
+      </main>
+    </div> // 3. Se añadió el cierre del div principal que faltaba
   )
 }
