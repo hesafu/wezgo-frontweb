@@ -1,75 +1,79 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { supabase } from '@/utils/supabase'
-import Link from 'next/link'
-import toast from 'react-hot-toast'
+import { useState } from "react"
+import { supabase } from "@/utils/supabase"
+import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card, CardHeader } from "@/components/ui/card"
+import { toast } from "react-hot-toast"
+import Link from "next/link"
 
 export default function Login() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const router = useRouter()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState(null)
 
-  async function handleLogin() {
+  const handleLogin = async (e) => {
+    e.preventDefault()
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) {
-      setError('Email o contraseña incorrectos')
+      toast.error(error.message)
     } else {
-      toast.success('Bienvenido a Triplo! ✈️')
-      router.push('/dashboard')
+      toast.success("Welcome back!")
+      router.push("/dashboard")
     }
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 relative">
-      {/* Extra glow behind the card */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-cyan-500/15 to-violet-500/15 blur-[100px] rounded-full pointer-events-none" aria-hidden="true" />
-
-      <div className="glass rounded-3xl p-10 w-full max-w-md animate-fade-in-up relative">
-        {/* Subtle top-edge highlight */}
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-t-3xl" aria-hidden="true" />
-
-        <h2 className="text-3xl font-bold gradient-text mb-2 text-center">
-          Bienvenido a Triplo ✈️
-        </h2>
-        <p className="text-center text-white/40 mb-8">Inicia sesión para ver tus viajes</p>
-
-        {error && (
-          <div className="mb-4 px-4 py-2.5 rounded-xl text-sm text-center"
-               style={{ background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.25)', color: '#fca5a5' }}>
-            {error}
+    <div className="max-w-md mx-auto py-12 px-6">
+      <Card className="animate-fade-in">
+        <CardHeader 
+          title="Sign In" 
+          subtitle="Enter your credentials to access your trips" 
+          gradientTitle 
+        />
+        
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-text-muted px-1">Email Address</label>
+            <Input
+              type="email"
+              placeholder="name@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
-        )}
+          
+          <div className="space-y-2">
+            <div className="flex justify-between items-center px-1">
+              <label className="text-sm font-medium text-text-muted">Password</label>
+              <Link href="#" className="text-xs text-brand-cyan hover:underline">Forgot password?</Link>
+            </div>
+            <Input
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          className="glass-input w-full rounded-xl px-4 py-3 mb-4 text-sm"
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          className="glass-input w-full rounded-xl px-4 py-3 mb-6 text-sm"
-        />
-        <button
-          onClick={handleLogin}
-          className="btn-cta w-full py-3 rounded-xl text-base mb-5"
-        >
-          Entrar
-        </button>
-        <p className="text-center text-white/40 text-sm">
-          ¿No tienes cuenta?{' '}
-          <Link href="/registro" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
-            Regístrate
-          </Link>
-        </p>
-      </div>
-    </main>
+          <Button type="submit" className="w-full mt-6">
+            Continue with Email
+          </Button>
+        </form>
+
+        <div className="mt-8 text-center border-t border-white/5 pt-6">
+          <p className="text-sm text-text-muted">
+            New to Triplo?{" "}
+            <Link href="/registro" className="text-brand-cyan font-bold hover:underline">
+              Create an account
+            </Link>
+          </p>
+        </div>
+      </Card>
+    </div>
   )
 }
