@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { supabase } from "@/utils/supabase"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardHeader } from "@/components/ui/card"
@@ -9,22 +10,31 @@ import Link from "next/link"
 import { ArrowLeft, Mail } from "lucide-react"
 
 /**
- * Forgot Password Page - Part of Task TK-006
- * UI: Spanish | Code & Comments: English
- * Premium Glassmorphism styling with Tailwind CSS v4
+ * Forgot Password Page - Part of Task TK-007
+ * 
+ * Integration: Supabase Password Reset Request
  */
 export default function ForgotPassword() {
   const [email, setEmail] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleResetRequest = (e) => {
+  const handleResetRequest = async (e) => {
     e.preventDefault()
-    // Integration logic will follow in Task TK-007
     setIsLoading(true)
-    setTimeout(() => {
-      toast.success("¡Correo enviado!")
+    
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/auth/callback?next=/dashboard/reset-password`,
+      })
+
+      if (error) throw error
+      
+      toast.success("¡Correo de recuperación enviado!")
+    } catch (error) {
+      toast.error(error.message || "No se pudo enviar el enlace")
+    } finally {
       setIsLoading(false)
-    }, 500)
+    }
   }
 
   return (
