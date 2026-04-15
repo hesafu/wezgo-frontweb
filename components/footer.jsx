@@ -3,8 +3,7 @@ import { Plane, Instagram, Twitter, Github } from 'lucide-react';
 import Link from 'next/link';
 
 /**
- * Shared Footer Component
- * Elegant glass footer with social links and product information
+ * Footer - Spanish UI version
  */
 export const Footer = () => {
   return (
@@ -17,45 +16,28 @@ export const Footer = () => {
             <span className="text-2xl font-bold gradient-text">Triplo</span>
           </div>
           <p className="text-text-muted max-w-sm leading-relaxed">
-            Revolutionizing the way you plan trips with friends. Organize, explore, and share your adventures in a premium, high-speed interface.
+            La plataforma definitiva para organizar viajes grupales sin dramas. Planifica, divide gastos y disfruta del viaje.
           </p>
-          <div className="flex items-center gap-4">
-            <Link href="#" className="p-2 glass rounded-xl hover:bg-white/10 transition-colors">
-              <Instagram className="w-5 h-5 text-text-muted hover:text-text-main transition-colors" />
-            </Link>
-            <Link href="#" className="p-2 glass rounded-xl hover:bg-white/10 transition-colors">
-              <Twitter className="w-5 h-5 text-text-muted hover:text-text-main transition-colors" />
-            </Link>
-            <Link href="#" className="p-2 glass rounded-xl hover:bg-white/10 transition-colors">
-              <Github className="w-5 h-5 text-text-muted hover:text-text-main transition-colors" />
-            </Link>
+        </div>
+
+        {/* Links */}
+        <div className="flex flex-col gap-2">
+          <h4 className="font-bold text-text-main mb-2">Producto</h4>
+          <Link href="#" className="text-sm text-text-muted hover:text-text-main transition-colors">Destinos</Link>
+          <Link href="#" className="text-sm text-text-muted hover:text-text-main transition-colors">Precios</Link>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <h4 className="font-bold text-text-main mb-2">Social</h4>
+          <div className="flex gap-4">
+            <Instagram className="w-5 h-5 text-text-muted hover:text-text-main" />
+            <Twitter className="w-5 h-5 text-text-muted hover:text-text-main" />
           </div>
-        </div>
-
-        {/* Product Links */}
-        <div className="flex flex-col gap-4">
-          <h4 className="font-bold text-text-main">Product</h4>
-          <Link href="#" className="text-sm text-text-muted hover:text-text-main transition-colors">Destinations</Link>
-          <Link href="#" className="text-sm text-text-muted hover:text-text-main transition-colors">Planner</Link>
-          <Link href="#" className="text-sm text-text-muted hover:text-text-main transition-colors">Mobile App</Link>
-        </div>
-
-        {/* Company Links */}
-        <div className="flex flex-col gap-4">
-          <h4 className="font-bold text-text-main">Support</h4>
-          <Link href="#" className="text-sm text-text-muted hover:text-text-main transition-colors">Help Center</Link>
-          <Link href="#" className="text-sm text-text-muted hover:text-text-main transition-colors">Privacy Policy</Link>
-          <Link href="#" className="text-sm text-text-muted hover:text-text-main transition-colors">Contact Us</Link>
         </div>
       </div>
       
-      <div className="max-w-7xl mx-auto border-t border-white/5 mt-16 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-xs text-text-muted">
-          © {new Date().getFullYear()} Triplo App Inc. All rights reserved.
-        </p>
-        <p className="text-xs text-text-muted flex items-center gap-1">
-          Handcrafted with ❤️ for world travelers.
-        </p>
+      <div className="max-w-7xl mx-auto border-t border-white/5 mt-16 pt-8 text-xs text-text-muted">
+        © {new Date().getFullYear()} Triplo App. Hecho con ❤️ para viajeros.
       </div>
     </footer>
   );
