@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export default function PreparationLayout({ children }) {
-  // Ahora la ruta es fija al número 1
+  // Definimos las rutas fijas hacia la carpeta "1"
   const navItems = [
     { label: 'Chat', href: '/trips/1/preparation/chat' },
     { label: 'Documentos', href: '/trips/1/preparation/documents' },
@@ -12,7 +12,7 @@ export default function PreparationLayout({ children }) {
     <div className="min-h-screen bg-slate-900 text-white p-6">
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-blue-400">Fase de Preparación</h1>
-        <p className="text-slate-400 text-sm">Viaje de Prueba #1</p>
+        <p className="text-slate-400 text-sm">Viaje #1</p>
       </header>
 
       <nav className="flex gap-2 mb-6 bg-white/5 p-1 rounded-lg w-fit border border-white/10">
@@ -27,7 +27,7 @@ export default function PreparationLayout({ children }) {
         ))}
       </nav>
 
-      <main className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl">
+      <main className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 min-h-[400px]">
         {children}
       </main>
     </div>
