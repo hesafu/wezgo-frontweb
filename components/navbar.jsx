@@ -17,7 +17,7 @@ export const Navbar = () => {
           <div className="w-10 h-10 bg-brand-cyan rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
             <Plane className="w-6 h-6 text-brand-background fill-current" />
           </div>
-          <span className="text-xl font-bold tracking-tight text-text-main">Triplo</span>
+          <span className="text-xl font-bold tracking-tight text-text-main">Wezgo</span>
         </Link>
 
         {/* Global Links */}

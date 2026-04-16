@@ -72,7 +72,7 @@ export default function Login() {
         
         <CardHeader 
           title="Hola de nuevo" 
-          subtitle="Accede a tus aventuras con Triplo" 
+          subtitle="Accede a tus aventuras con Wezgo" 
           gradientTitle 
         />
         
