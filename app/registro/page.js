@@ -79,10 +79,11 @@ export default function Register() {
       <Card className="animate-fade-in relative overflow-hidden bg-white/5 backdrop-blur-xl border-white/10">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500" />
         
-        <div className="p-6 text-center text-white">
-          <h2 className="text-3xl font-bold mb-2">Empezar viaje</h2>
-          <p className="text-slate-400">Crea tu cuenta en Triplo hoy mismo</p>
-        </div>
+        <CardHeader 
+          title="Empezar viaje" 
+          subtitle="Crea tu cuenta en Wezgo hoy mismo" 
+          gradientTitle 
+        />
 
         <div className="px-6 pb-4 space-y-4">
           <Button 
