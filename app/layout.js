@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Triplo | Premium Trip Planner",
-  description: "Organize your next adventure with friends in a high-speed glassmorphism experience.",
+  title: "Wezgo | Premium Trip Planner",
+  description: "Organize your next adventure with friends in a high-speed glassmorphism experience with Wezgo.",
 };
 
 export default function RootLayout({ children }) {

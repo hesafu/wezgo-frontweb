@@ -1,9 +1,9 @@
 import { updateSession } from './utils/supabase/middleware'
 
 /**
- * Root Middleware to handle session verification and routing rules.
+ * Root Proxy to handle session verification and routing rules.
  */
-export async function middleware(request) {
+export async function proxy(request) {
   return await updateSession(request)
 }
 

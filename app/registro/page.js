@@ -85,7 +85,7 @@ export default function Register() {
         
         <CardHeader 
           title="Empezar viaje" 
-          subtitle="Crea tu cuenta en Triplo hoy mismo" 
+          subtitle="Crea tu cuenta en Wezgo hoy mismo" 
           gradientTitle 
         />
 
