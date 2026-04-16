@@ -1,0 +1,139 @@
+# 🌍 Wezgo - Frontweb
+
+Aplicación web para la **gestión de viajes grupales**, donde los usuarios pueden organizar tareas, comunicarse y centralizar toda la información del viaje en un solo lugar.
+
+Desarrollado con **Next.js 14**, **Supabase** y **Tailwind CSS**.
+
+---
+
+## 🚀 Estado del Proyecto
+
+🛠️ En desarrollo activo
+
+Actualmente incluye:
+
+* Sistema de autenticación completo
+* Base de navegación para gestión de viajes
+
+---
+
+## 🌐 Demo
+
+👉 Próximamente disponible
+
+---
+
+## 🛠️ Tech Stack
+
+| Tecnología      | Uso                 |
+| --------------- | ------------------- |
+| Next.js 14      | Framework principal |
+| Tailwind CSS    | Estilos             |
+| Shadcn/UI       | Componentes UI      |
+| Supabase        | Backend + Auth      |
+| Lucide React    | Iconos              |
+| React Hot Toast | Notificaciones      |
+
+---
+
+## ✨ Funcionalidades
+
+### 🔐 Autenticación
+
+* Registro con email y contraseña
+* Login con Google (OAuth)
+* Gestión de sesión con Supabase
+
+### ✈️ Gestión de Viajes
+
+* Rutas dinámicas por viaje
+* Layouts por fases del viaje
+
+### 📦 Módulos disponibles
+
+* 💬 Chat grupal
+* 📁 Documentos (reservas, archivos)
+* 📋 Tareas colaborativas
+
+---
+
+## 📂 Estructura del Proyecto
+
+```text
+app/
+├── registro/
+│   └── page.js
+└── trips/
+    └── [id]/
+        └── preparation/
+            ├── layout.js
+            └── chat/
+```
+
+---
+
+## ⚙️ Instalación / Getting Started
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/hesafu/wezgo-frontweb.git
+cd wezgo-frontweb
+```
+
+### 2. Instalar dependencias
+
+```bash
+npm install
+```
+
+### 3. Configurar variables de entorno
+
+Crea un archivo `.env.local`:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_key
+```
+
+### 4. Ejecutar el proyecto
+
+```bash
+npm run dev
+```
+
+---
+
+## 🧪 Roadmap
+
+* [x] Autenticación (Email + Google)
+* [x] Base de navegación por viajes
+* [ ] Chat en tiempo real
+* [ ] Subida de documentos
+* [ ] Sistema de tareas colaborativas
+* [ ] Notificaciones en tiempo real
+* [ ] Deploy público
+
+---
+
+## 🤝 Contribución / Contributing
+
+Las contribuciones son bienvenidas 🚀
+
+1. Haz fork del proyecto
+2. Crea una rama (`feature/nueva-feature`)
+3. Commit (`git commit -m 'feat: nueva feature'`)
+4. Push (`git push origin feature/nueva-feature`)
+5. Abre un Pull Request
+
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## ⭐ Support
+
+Si te gusta el proyecto, dale una ⭐ en GitHub 🙂
