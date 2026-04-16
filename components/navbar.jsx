@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { Plane, Menu } from 'lucide-react';
+import { Plane, Menu, UserCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -25,6 +25,7 @@ export const Navbar = () => {
           <Link href="/destinos" className="text-sm font-medium text-text-muted hover:text-text-main transition-colors">Explorar</Link>
           <Link href="/comunidad" className="text-sm font-medium text-text-muted hover:text-text-main transition-colors">Comunidad</Link>
           <Link href="/nosotros" className="text-sm font-medium text-text-muted hover:text-text-main transition-colors">Sobre nosotros</Link>
+          <Link href="/perfil" className="text-sm font-medium text-text-muted hover:text-text-main transition-colors">Mi Perfil</Link>
         </div>
 
         {/* Actions */}
