@@ -2,7 +2,6 @@ import { Card, CardHeader } from "@/components/ui/card";
 import { LucideMapPin, LucideCalendar, LucideUsers, LucideInfo } from "lucide-react";
 
 export default function TripOverviewPage() {
-  // Datos temporales antes de conectar con Supabase (FRT-TK-011)
   const trip = {
     title: "Tour Japón",
     destination: "Tokio, Japón",
@@ -15,7 +14,6 @@ export default function TripOverviewPage() {
     <div className="flex flex-col gap-6 p-6 animate-in fade-in duration-500">
       <div className="space-y-1">
         <h1 className="text-3xl font-extrabold text-white tracking-tight">Resumen</h1>
-        <p className="text-text-muted italic text-sm">Bloque FRT-BL-10: Vista general del viaje</p>
       </div>
 
       <Card className="bg-white/10 backdrop-blur-md border-white/20 p-8 shadow-2xl">
