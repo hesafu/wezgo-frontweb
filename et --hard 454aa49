@@ -1,0 +1,14 @@
+[33mc851ef1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: reset: moving to origin/main
+[33mc851ef1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{1}: reset: moving to origin/main
+[33mc851ef1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{2}: reset: moving to c851ef1
+[33m0ca5a20[m HEAD@{3}: reset: moving to 0ca5a20
+[33m053bce3[m HEAD@{4}: reset: moving to origin/main
+[33m454aa49[m HEAD@{5}: checkout: moving from feature/setup-inicial-limpio to main
+[33md2bc645[m[33m ([m[1;31morigin/feature/setup-inicial-limpio[m[33m, [m[1;32mfeature/setup-inicial-limpio[m[33m, [m[1;32mfeat/TRL-224-profile-page[m[33m)[m HEAD@{6}: checkout: moving from feat/TRL-224-profile-page to feature/setup-inicial-limpio
+[33md2bc645[m[33m ([m[1;31morigin/feature/setup-inicial-limpio[m[33m, [m[1;32mfeature/setup-inicial-limpio[m[33m, [m[1;32mfeat/TRL-224-profile-page[m[33m)[m HEAD@{7}: commit: feat: initial architecture, Supabase auth and glassmorphism UI
+[33md5a1849[m HEAD@{8}: reset: moving to HEAD~5
+[33mf7e5dfc[m[33m ([m[1;31morigin/feat/TRL-224-profile-page[m[33m)[m HEAD@{9}: Branch: renamed refs/heads/feature/user-profile-dev3 to refs/heads/feat/TRL-224-profile-page
+[33mf7e5dfc[m[33m ([m[1;31morigin/feat/TRL-224-profile-page[m[33m)[m HEAD@{11}: commit (amend): feat(TRL-224): Profile Page - User info edit form UI
+[33mad35040[m HEAD@{12}: commit: feat(TRL-224): Profile Page - User info edit form UI
+[33m454aa49[m HEAD@{13}: checkout: moving from main to feature/user-profile-dev3
+[33m454aa49[m HEAD@{14}: clone: from https://github.com/hesafu/wezgo-frontweb.git
