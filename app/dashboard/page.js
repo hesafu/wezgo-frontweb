@@ -9,9 +9,10 @@ import { Button } from "@/components/ui/button"
 import { LogOut, Plus, MapPin, Search, Filter } from "lucide-react"
 import { toast } from "react-hot-toast"
 import { Input } from "@/components/ui/input"
+import { CreateTripModal } from "@/components/create-trip-modal"
 
 /**
- * Dashboard Page - Wezgo Brand Redesign
+ * Dashboard Page - wezgo Brand Redesign
  * TASK FRT-TK-010: Trip Dashboard UI: Grid of trips with status badges
  * TASK FRT-TK-011: Fetching Trips: Supabase integration for list of trips
  */
@@ -19,6 +20,7 @@ export default function Dashboard() {
   const [user, setUser] = useState(null)
   const [trips, setTrips] = useState([])
   const [loading, setLoading] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const router = useRouter()
   const supabase = createClient()
   
@@ -47,6 +49,15 @@ export default function Dashboard() {
     initializeDashboard()
   }, [router, supabase])
 
+  const fetchTrips = async () => {
+    try {
+      const data = await tripService.getTrips()
+      setTrips(data || [])
+    } catch (error) {
+      toast.error("Error al refrescar viajes")
+    }
+  }
+
   const handleLogout = async () => {
     await supabase.auth.signOut()
     toast.success("Sesión cerrada correctamente")
@@ -68,22 +79,26 @@ export default function Dashboard() {
           <h1 className="text-5xl font-display font-extrabold tracking-tight text-white leading-tight">
             ¡Hola, <span className="text-brand-coral">{user?.user_metadata?.display_name || user?.user_metadata?.full_name || "Viajero"}</span>!
           </h1>
-          <p className="text-slate-400 mt-3 text-lg font-body">
-            {trips.length > 0 
-              ? `Tienes ${trips.length} planes organizados.` 
-              : "Aún no tienes viajes planeados. ¡Empieza uno nuevo!"}
-          </p>
-        </div>
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" onClick={handleLogout} className="gap-2 text-slate-400 hover:text-white hover:bg-white/5 rounded-2xl px-6 h-12 transition-all">
-            <LogOut className="w-4 h-4" />
-            Salir
-          </Button>
-          <Button className="gap-2 bg-brand-coral hover:bg-brand-coral/90 text-white rounded-2xl px-8 h-12 shadow-xl shadow-brand-coral/20 border-0 transition-all font-bold">
-            <Plus className="w-5 h-5" />
-            Nueva aventura
-          </Button>
-        </div>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="space-y-2">
+              <h1 className="text-4xl md:text-6xl font-display font-black text-white tracking-tight">
+                Vuestros <span className="text-brand-coral">viajes</span>
+              </h1>
+              <p className="text-lg text-slate-400 font-body">
+                Explorad y planificad vuestras próximas aventuras con la gente que queréis.
+              </p>
+            </div>
+            
+            <div className="flex items-center gap-3">
+              <Button 
+                onClick={() => setIsModalOpen(true)}
+                size="lg" 
+                className="bg-brand-coral hover:bg-brand-coral/90 text-white rounded-2xl shadow-xl shadow-brand-coral/20 px-8 py-8 text-lg font-bold"
+              >
+                <Plus className="w-6 h-6 mr-2" /> Cread un viaje
+              </Button>
+            </div>
+          </div>
       </div>
 
       {/* Filter & Search Section */}
@@ -114,14 +129,25 @@ export default function Dashboard() {
             <MapPin className="w-10 h-10 text-slate-600" />
           </div>
           <h3 className="text-2xl font-display text-white mb-2">No se encontraron viajes</h3>
-          <p className="text-slate-400 max-w-xs mx-auto font-body text-balance">
-            Tu lista de aventuras está vacía. Empieza por crear tu primer viaje grupal.
-          </p>
-          <Button className="mt-8 bg-brand-coral hover:bg-brand-coral/90 text-white rounded-2xl px-10 h-14 border-0 font-bold transition-all shadow-lg shadow-brand-coral/20">
-            Crear mi primer viaje
-          </Button>
+              <p className="text-slate-500 mb-8 max-w-md mx-auto">
+                Parece que todavía no habéis organizado ningún viaje. ¡Invitad a vuestros amigos y empezad hoy mismo!
+              </p>
+              <Button 
+                onClick={() => setIsModalOpen(true)}
+                size="lg" 
+                className="bg-brand-coral hover:bg-brand-coral/90 text-white rounded-2xl px-10 py-8 font-black text-xl"
+              >
+                Cread vuestro primer viaje
+              </Button>
         </div>
       )}
+
+      {/* Create Trip Modal Integration */}
+      <CreateTripModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onSuccess={fetchTrips}
+      />
     </div>
   )
 }

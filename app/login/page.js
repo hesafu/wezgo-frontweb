@@ -11,7 +11,7 @@ import Link from "next/link"
 import { Mail, ArrowRight } from "lucide-react"
 
 /**
- * Login Page - Wezgo Brand Update
+ * Login Page - wezgo Brand Update
  */
 export default function Login() {
   const [email, setEmail] = useState("")
@@ -36,7 +36,7 @@ export default function Login() {
       
       if (error) throw error
       
-      toast.success("¡Bienvenido de nuevo a Wezgo!")
+      toast.success("¡Bienvenido de nuevo a wezgo!")
       router.push("/dashboard")
     } catch (error) {
       toast.error(error.message || "Credenciales incorrectas")
@@ -70,7 +70,7 @@ export default function Login() {
         
         <CardHeader 
           title="Hola de nuevo" 
-          subtitle="Accede a tus aventuras con Wezgo" 
+          subtitle="Acceded a vuestras aventuras con wezgo" 
           gradientTitle 
         />
         
@@ -90,9 +90,11 @@ export default function Login() {
             Continuar con Google
           </Button>
           <div className="relative py-4">
-            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/5" /></div>
-            <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-widest text-slate-500">
-              <span className="bg-brand-night px-4">O accede con tu correo</span>
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t border-white/5"></span>
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-[#14162e] px-4 text-slate-500 font-bold tracking-[0.2em]">O acceded con vuestro correo</span>
             </div>
           </div>
         </div>
@@ -116,7 +118,7 @@ export default function Login() {
           <div className="space-y-3">
             <div className="flex justify-between items-center px-1">
               <label className="text-xs font-bold uppercase tracking-widest text-slate-500">Contraseña</label>
-              <Link href="/forgot-password" size="sm" className="text-xs text-brand-coral hover:underline transition-all font-bold">¿Olvidaste tu contraseña?</Link>
+              <Link href="/forgot-password" size="sm" className="text-xs text-brand-coral hover:underline transition-all font-bold">¿Olvidasteis vuestra contraseña?</Link>
             </div>
             <Input
               type="password"
@@ -136,9 +138,9 @@ export default function Login() {
 
         <div className="mt-8 text-center border-t border-white/5 pt-6">
           <p className="text-sm text-slate-400">
-            ¿No tienes una cuenta aún?{" "}
+            ¿No tenéis una cuenta aún?{" "}
             <Link href="/registro" className="text-brand-sun font-bold hover:text-brand-coral transition-colors flex items-center justify-center gap-1 mt-2">
-              Empieza ahora <ArrowRight className="w-4 h-4" />
+              Empezad ahora <ArrowRight className="w-4 h-4" />
             </Link>
           </p>
         </div>

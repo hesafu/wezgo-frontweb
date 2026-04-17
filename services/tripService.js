@@ -45,5 +45,33 @@ export const tripService = {
     }
 
     return data;
+  },
+
+  /**
+   * Create a new trip
+   */
+  async createTrip(tripData) {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error("No user authenticated");
+
+    const { data, error } = await supabase
+      .from("trips")
+      .insert([
+        {
+          ...tripData,
+          created_by: user.id,
+          status: tripData.status || "Upcoming",
+          created_at: new Date().toISOString()
+        }
+      ])
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Error creating trip:", error);
+      throw error;
+    }
+
+    return data;
   }
 };
