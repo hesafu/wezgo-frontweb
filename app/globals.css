@@ -1,146 +1,235 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- Wezgo Official Brand Colors --- */
-  --color-brand-night: #14162e;
-  --color-brand-coral: #f04e2a;
-  --color-brand-sun: #ffba49;
-  --color-brand-teal: #2ec4b6;
-  --color-brand-mist: #f7f3ee;
-  
-  /* --- Tonal Variants from Manual --- */
-  --color-brand-coral-10: #fee8e2;
-  --color-brand-coral-20: #fcc5b4;
-  --color-brand-night-10: #e8eaf0;
-  --color-brand-sun-10: #fff8e6;
-  --color-brand-teal-10: #e0f9f7;
+  /* ── Brand Colors (Manual §1) ─────────────────── */
+  --color-brand-coral:   #F04E2A; /* Primary: CTAs, icon, actions */
+  --color-brand-night:   #14162E; /* Base text, dark backgrounds   */
+  --color-brand-sun:     #FFBA49; /* Accent: badges, warnings      */
+  --color-brand-mist:    #F7F3EE; /* Light background, cards       */
+  --color-brand-teal:    #2EC4B6; /* Success, active state         */
 
-  /* --- Neutrals & Grays --- */
-  --color-brand-gray: #888780;
-  --color-brand-lgray: #d3d1c7;
-  --color-brand-mgray: #b4b2a9;
-  --color-brand-dgray: #444441;
+  /* ── Grays (Manual §1) ───────────────────────── */
+  --color-brand-gray:    #888780; /* Secondary text                */
+  --color-brand-lgray:   #D3D1C7; /* Subtle borders, dividers      */
+  --color-brand-mgray:   #B4B2A9; /* Disabled labels               */
+  --color-brand-dgray:   #444441; /* Dense body text               */
+  --color-brand-white:   #FFFFFF;
 
-  /* --- UI Tokens --- */
-  --color-glass-bg: rgba(255, 255, 255, 0.03);
-  --color-glass-border: rgba(255, 255, 255, 0.06);
-  --color-glass-nav: rgba(20, 22, 46, 0.85);
+  /* ── Tonal Variants (Manual §1) ─────────────── */
+  --color-brand-coral-10: #FEE8E2; /* Error/critical alert bg       */
+  --color-brand-coral-20: #FCC5B4; /* Error border                  */
+  --color-brand-night-10: #E8EAF0;
+  --color-brand-sun-10:   #FFF8E6; /* Warning/pending expense bg    */
+  --color-brand-teal-10:  #E0F9F7; /* Success/onboarding bg         */
 
-  /* --- Typography --- */
+  /* ── Typography (Manual §2) ─────────────────── */
   --font-display: var(--font-syne), sans-serif;
-  --font-body: var(--font-plus-jakarta), sans-serif;
-  
-  /* --- Custom Animations --- */
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-fade-in: fadeIn 0.8s ease-out forwards;
+  --font-body:    var(--font-plus-jakarta), sans-serif;
+
+  /* ── Animations ──────────────────────────────── */
+  --animate-float:    float 6s ease-in-out infinite;
+  --animate-fade-in:  fadeIn 0.6s ease-out forwards;
 }
 
-/* --- Base Layer --- */
+/* ── Base Layer ──────────────────────────────────── */
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   html, body {
-    @apply bg-brand-night text-white min-h-screen font-body antialiased;
+    /* Night is the base colour for this app (dark shell) */
+    @apply bg-brand-night text-white font-body antialiased min-h-screen;
     margin: 0;
     padding: 0;
   }
 
-  h1, h2, h3, h4, .font-display {
-    font-family: var(--font-display);
-    @apply font-bold tracking-tight;
+  /* Display headings always use Syne (Manual §2) with explicit fallbacks */
+  h1, h2, h3, h4 {
+    font-family: var(--font-syne), 'Syne', sans-serif;
+    font-weight: 700;
   }
 
-  /* Manual rule: brand name always lowercase */
-  .brand-name {
-    text-transform: lowercase;
+  /* Body base font (Manual §2: Plus Jakarta Sans) */
+  body {
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  /* Brand name ALWAYS lowercase (Manual §4) */
+  .brand-name { text-transform: lowercase; }
 
   ::selection {
     @apply bg-brand-coral/30 text-white;
   }
 }
 
-/* --- Global Ambient Effects --- */
-body {
-  position: relative;
-  overflow-x: hidden;
+/* ── Typography Scale (Manual §2, exact values) ──── */
+/* These classes are plain CSS — no @apply — to avoid any
+   Tailwind v4 variable-chain issues. They reference the
+   Next.js CSS vars (--font-syne, --font-plus-jakarta)
+   which are always available via inheritance from <body>. */
+@layer utilities {
+
+  /* Hero: Syne Bold 700 · 40–48px · ls -1.5px · lh 1 */
+  .type-hero {
+    font-family: var(--font-syne), 'Syne', sans-serif;
+    font-size: clamp(40px, 6vw, 48px);
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 1;
+  }
+
+  /* H1: Syne Bold 700 · 28px · ls -0.8px */
+  .type-h1 {
+    font-family: var(--font-syne), 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    line-height: 1.15;
+  }
+
+  /* H2: Syne Bold 700 · 20px · ls -0.4px */
+  .type-h2 {
+    font-family: var(--font-syne), 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+  }
+
+  /* H3: Syne Bold 700 · 16px */
+  .type-h3 {
+    font-family: var(--font-syne), 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  /* Body L: Plus Jakarta Sans Regular 400 · 16px */
+  .type-body-l {
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* Body M: Plus Jakarta Sans Regular 400 · 14px */
+  .type-body-m {
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* Label: Plus Jakarta Sans SemiBold 600 · 11–12px · ls 0.08em */
+  .type-label {
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  /* Caption: Plus Jakarta Sans Regular 400 · 11px */
+  .type-caption {
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* Pill/Badge — Manual §3: 100px radius, uppercase, label style */
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-width: 1px;
+    border-style: solid;
+  }
 }
 
-/* Updated ambient orbs following the manual's coral/teal secondary accents */
-body::before, body::after {
-  content: "";
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(140px);
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.4;
+
+/* ── Component Surfaces ──────────────────────────── */
+
+/* Glass card: for Night-background sections */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-body::before {
-  width: 600px;
-  height: 600px;
-  top: -200px;
-  left: -200px;
-  background: radial-gradient(circle, rgba(240, 78, 42, 0.12) 0%, transparent 70%);
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
 }
 
-body::after {
-  width: 500px;
-  height: 500px;
-  bottom: -150px;
-  right: -150px;
-  background: radial-gradient(circle, rgba(46, 196, 182, 0.1) 0%, transparent 70%);
+/* Mist card: for Mist-background sections (Manual §1: Mist/Night contrast) */
+.mist-card {
+  background: #FFFFFF;
+  border: 1px solid #D3D1C7;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* --- Utility Classes --- */
-
-.glass {
-  background: var(--color-glass-bg);
-  border: 1px solid var(--color-glass-border);
-  backdrop-filter: blur(18px) saturate(1.5);
-  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+.mist-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(20, 22, 46, 0.12);
 }
 
+/* Nav glass */
 .glass-nav {
-  background: var(--color-glass-nav);
-  border-bottom: 1px solid var(--color-glass-border);
+  background: rgba(20, 22, 46, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
 
-.glass-card {
-  background: var(--color-glass-bg);
-  border: 1px solid var(--color-glass-border);
-  backdrop-filter: blur(18px) saturate(1.5);
-  -webkit-backdrop-filter: blur(18px) saturate(1.5);
-  @apply rounded-2xl p-6 transition-all duration-300;
-}
-
-.glass-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-}
-
+/* Gradient text accent */
 .gradient-text-coral {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-coral to-brand-sun;
 }
 
-.noise-overlay {
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  filter: contrast(120%) brightness(100%);
+/* ── Ambient Orbs ─────────────────────────────────── */
+body { position: relative; overflow-x: hidden; }
+
+body::before, body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(130px);
+  pointer-events: none;
+  z-index: -1;
 }
 
-/* Keyframes */
+body::before {
+  width: 560px; height: 560px;
+  top: -180px; left: -180px;
+  background: radial-gradient(circle, rgba(240, 78, 42, 0.09) 0%, transparent 70%);
+}
+
+body::after {
+  width: 480px; height: 480px;
+  bottom: -140px; right: -140px;
+  background: radial-gradient(circle, rgba(46, 196, 182, 0.07) 0%, transparent 70%);
+}
+
+/* ── Keyframes ───────────────────────────────────── */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50%       { transform: translateY(-10px); }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

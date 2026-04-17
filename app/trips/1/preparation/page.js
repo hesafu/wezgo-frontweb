@@ -1,8 +1,15 @@
+/**
+ * Preparation Home — wezgo
+ * Manual §2: type-h2, type-body-m.
+ * Manual §5: vosotros.
+ */
 export default function PreparationHomePage() {
   return (
-    <div className="text-center py-20">
-      <h2 className="text-2xl font-light text-slate-300">Bienvenido a la Organización</h2>
-      <p className="text-slate-500 mt-2">Selecciona una opción del menú superior para comenzar.</p>
+    <div className="flex flex-col items-center justify-center py-24 text-center">
+      <h2 className="type-h2 text-white mb-2">Bienvenidos a la fase de organización</h2>
+      <p className="type-body-m text-brand-mgray max-w-sm">
+        Elegid una opción del menú superior para empezar a planificar vuestra aventura.
+      </p>
     </div>
-  );
+  )
 }
