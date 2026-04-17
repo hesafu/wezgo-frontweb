@@ -44,10 +44,15 @@
     padding: 0;
   }
 
-  /* Display headings always use Syne (Manual §2) */
+  /* Display headings always use Syne (Manual §2) with explicit fallbacks */
   h1, h2, h3, h4 {
-    font-family: var(--font-display);
+    font-family: var(--font-syne), 'Syne', sans-serif;
     font-weight: 700;
+  }
+
+  /* Body base font (Manual §2: Plus Jakarta Sans) */
+  body {
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
   }
 
   /* Brand name ALWAYS lowercase (Manual §4) */
@@ -59,82 +64,87 @@
 }
 
 /* ── Typography Scale (Manual §2, exact values) ──── */
+/* These classes are plain CSS — no @apply — to avoid any
+   Tailwind v4 variable-chain issues. They reference the
+   Next.js CSS vars (--font-syne, --font-plus-jakarta)
+   which are always available via inheritance from <body>. */
 @layer utilities {
-  /* Hero: Syne 700, 40-48px, ls -1.5px, lh 1 */
+
+  /* Hero: Syne Bold 700 · 40–48px · ls -1.5px · lh 1 */
   .type-hero {
-    font-family: var(--font-display);
+    font-family: var(--font-syne), 'Syne', sans-serif;
     font-size: clamp(40px, 6vw, 48px);
     font-weight: 700;
     letter-spacing: -1.5px;
     line-height: 1;
   }
 
-  /* H1: Syne 700, 28px, ls -0.8px */
+  /* H1: Syne Bold 700 · 28px · ls -0.8px */
   .type-h1 {
-    font-family: var(--font-display);
+    font-family: var(--font-syne), 'Syne', sans-serif;
     font-size: 28px;
     font-weight: 700;
     letter-spacing: -0.8px;
     line-height: 1.15;
   }
 
-  /* H2: Syne 700, 20px, ls -0.4px */
+  /* H2: Syne Bold 700 · 20px · ls -0.4px */
   .type-h2 {
-    font-family: var(--font-display);
+    font-family: var(--font-syne), 'Syne', sans-serif;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: -0.4px;
     line-height: 1.2;
   }
 
-  /* H3: Syne 700, 16px */
+  /* H3: Syne Bold 700 · 16px */
   .type-h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-syne), 'Syne', sans-serif;
     font-size: 16px;
     font-weight: 700;
     line-height: 1.3;
   }
 
-  /* Body L: Jakarta 400, 16px */
+  /* Body L: Plus Jakarta Sans Regular 400 · 16px */
   .type-body-l {
-    font-family: var(--font-body);
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.6;
   }
 
-  /* Body M: Jakarta 400, 14px */
+  /* Body M: Plus Jakarta Sans Regular 400 · 14px */
   .type-body-m {
-    font-family: var(--font-body);
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.6;
   }
 
-  /* Label: Jakarta 600, 11-12px, ls 0.08em, uppercase for badges */
+  /* Label: Plus Jakarta Sans SemiBold 600 · 11–12px · ls 0.08em */
   .type-label {
-    font-family: var(--font-body);
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.08em;
     line-height: 1;
   }
 
-  /* Caption: Jakarta 400, 11px */
+  /* Caption: Plus Jakarta Sans Regular 400 · 11px */
   .type-caption {
-    font-family: var(--font-body);
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
     font-size: 11px;
     font-weight: 400;
-    color: var(--color-brand-gray);
+    line-height: 1.5;
   }
 
-  /* Pill/Badge helper (Manual §3): 100px radius, uppercase label */
+  /* Pill/Badge — Manual §3: 100px radius, uppercase, label style */
   .badge-pill {
     display: inline-flex;
     align-items: center;
     padding: 4px 10px;
     border-radius: 100px;
-    font-family: var(--font-body);
+    font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -143,6 +153,7 @@
     border-style: solid;
   }
 }
+
 
 /* ── Component Surfaces ──────────────────────────── */
 

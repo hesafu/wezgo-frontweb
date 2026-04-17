@@ -2,14 +2,15 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Shared Card Component - Updated for Wezgo Brand
- * Supports interactive glass states and display typography
+ * Shared Card Component — wezgo
+ * Manual §3: 12-16px radius (rounded-xl).
+ * Manual §2: Type scale applied via type-* classes.
  */
 export const Card = ({ children, className, hover = true }) => {
   return (
     <div className={cn(
-      "glass p-6 rounded-3xl transition-all duration-300",
-      hover && "glass-card",
+      "glass-card p-6 rounded-xl transition-all duration-300",
+      hover && "hover:border-white/20 hover:bg-white/10",
       className
     )}>
       {children}
@@ -19,14 +20,18 @@ export const Card = ({ children, className, hover = true }) => {
 
 export const CardHeader = ({ title, subtitle, gradientTitle = false }) => {
   return (
-    <div className="mb-6">
+    <div className="space-y-2">
       <h3 className={cn(
-        "text-3xl font-display font-black tracking-tight",
-        gradientTitle ? "gradient-text-coral" : "text-white"
+        "type-h2",
+        gradientTitle ? "gradient-text-coral" : "text-white text-center"
       )}>
         {title}
       </h3>
-      {subtitle && <p className="text-base text-slate-400 mt-1 font-body">{subtitle}</p>}
+      {subtitle && (
+        <p className="type-body-m text-brand-mgray text-center leading-relaxed">
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 };

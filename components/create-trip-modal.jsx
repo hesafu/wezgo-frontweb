@@ -81,7 +81,7 @@ export const CreateTripModal = ({ isOpen, onClose, onSuccess }) => {
               <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Nombre del viaje</label>
               <Input 
                 required
-                placeholder="Ej. Summer in Lisbon 🇵🇹"
+                placeholder="Ej. Summer in Lisbon"
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
                 className="h-14 text-base"
@@ -152,10 +152,9 @@ export const CreateTripModal = ({ isOpen, onClose, onSuccess }) => {
             <Button 
                 type="submit" 
                 disabled={loading}
-                className="w-full h-16 text-xl font-black rounded-2xl bg-brand-coral hover:bg-brand-coral/90 shadow-2xl shadow-brand-coral/30 border-0"
+                className="w-full h-11 rounded-lg bg-brand-coral hover:bg-brand-coral/90 text-white border-0 type-label uppercase"
             >
-              {loading ? "Creando..." : "Crear Viaje"}
-              <Sparkles className="ml-2 w-6 h-6" />
+              {loading ? "Creando..." : "Crear viaje"}
             </Button>
             <p className="text-[10px] text-center text-slate-500 uppercase tracking-widest font-bold">
               Al crear el viaje se generará un código único para vuestra gente.

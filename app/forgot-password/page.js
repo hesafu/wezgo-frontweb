@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { supabase } from "@/utils/supabase"
+import { createClient } from "@/utils/supabase/client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardHeader } from "@/components/ui/card"
@@ -10,28 +10,31 @@ import Link from "next/link"
 import { ArrowLeft, Mail } from "lucide-react"
 
 /**
- * Forgot Password Page - Part of Task TK-007
- * 
- * Integration: Supabase Password Reset Request
+ * Forgot Password Page — wezgo
+ * Manual §3: cards 12px r, buttons 8px r.
+ * Manual §2: type-h2 for title, type-label for label.
+ * Manual §5: vosotros form, toasts ≤40 chars.
  */
 export default function ForgotPassword() {
   const [email, setEmail] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const supabase = createClient()
 
   const handleResetRequest = async (e) => {
     e.preventDefault()
     setIsLoading(true)
     
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
         redirectTo: `${window.location.origin}/auth/callback?next=/dashboard/reset-password`,
       })
 
       if (error) throw error
       
-      toast.success("¡Correo de recuperación enviado!")
+      /* Manual §5: toast vosotros, concise */
+      toast.success("Enlace enviado. Revisad vuestro correo.")
     } catch (error) {
-      toast.error(error.message || "No se pudo enviar el enlace")
+      toast.error("Error al enviar el enlace. Intentadlo de nuevo.")
     } finally {
       setIsLoading(false)
     }
@@ -39,45 +42,60 @@ export default function ForgotPassword() {
 
   return (
     <div className="max-w-md mx-auto py-12 px-6">
-      <Card className="animate-fade-in relative overflow-hidden">
-        <div className="mb-4">
-          <Link href="/login" className="inline-flex items-center gap-2 text-sm text-text-muted hover:text-brand-cyan transition-colors group">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Volver al inicio
+      {/* Manual §3: card 12px radius */}
+      <Card className="glass-card relative overflow-hidden border-white/8 rounded-xl">
+        {/* Coral accent */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-coral to-brand-sun" />
+
+        <div className="mb-6">
+          <Link href="/login" className="inline-flex items-center gap-2 type-caption text-brand-mgray hover:text-brand-teal transition-colors group">
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+            Volver al inicio de sesión
           </Link>
         </div>
 
         <CardHeader 
           title="Recuperar acceso" 
-          subtitle="Te enviaremos un enlace seguro a tu correo" 
+          /* Manual §5: vosotros */
+          subtitle="Os enviaremos un enlace seguro a vuestro correo" 
           gradientTitle 
         />
         
-        <form onSubmit={handleResetRequest} className="space-y-6">
+        <form onSubmit={handleResetRequest} className="space-y-6 mt-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-text-muted px-1 flex items-center gap-2">
-              <Mail className="w-4 h-4" /> Correo electrónico
+            {/* Manual §2: type-label */}
+            <label className="type-label text-brand-mgray px-1 flex items-center gap-2 uppercase">
+              <Mail className="w-3.5 h-3.5" /> Correo electrónico
             </label>
             <Input
               type="email"
-              placeholder="tu@email.com"
+              /* Manual §5: no emoji, vosotros */
+              placeholder="vuestro@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={isLoading}
+              /* Manual §3: 8px radius */
+              className="bg-white/5 border-white/10 h-12 rounded-lg text-white focus:ring-brand-coral/40 type-body-m"
             />
           </div>
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Enviando..." : "Enviar enlace de recuperación"}
+          {/* CTA — Manual §3: 8px, Manual §5: ≤3 words */}
+          <Button 
+            type="submit" 
+            className="w-full h-12 bg-brand-coral hover:bg-brand-coral/90 text-white rounded-lg border-0 type-label uppercase shadow-none" 
+            disabled={isLoading}
+          >
+            {isLoading ? "Enviando..." : "Enviar enlace"}
           </Button>
         </form>
 
         <div className="mt-8 pt-6 border-t border-white/5 text-center">
-          <p className="text-sm text-text-muted">
-            ¿Necesitas ayuda?{" "}
-            <Link href="#" className="text-brand-cyan hover:underline transition-all font-medium">
-              Contactar soporte
+          {/* Manual §5: vosotros */}
+          <p className="type-body-m text-brand-mgray">
+            ¿Necesitáis ayuda?{" "}
+            <Link href="#" className="text-brand-teal hover:underline transition-all font-semibold italic">
+              Contactad con soporte
             </Link>
           </p>
         </div>

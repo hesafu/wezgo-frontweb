@@ -1,83 +1,81 @@
 "use client"
 
 import React from 'react'
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Calendar, MapPin, Plus, Star } from "lucide-react"
+import { Card } from '@/components/ui/card'
+import { Calendar, MapPin, Users } from 'lucide-react'
 
 /**
- * TripCard - Reusable component for trip previews
- * TASK FRT-TK-013: Trip Card Component: Visual status (Upcoming, Active, Past)
+ * TripCard — wezgo
+ * Manual §3: 12-16px card radius, pill badges 100px.
+ * Manual §2: type-h3 for card title, type-body-m for meta, type-label for badge.
+ * Manual §1: Teal=active, Sun=upcoming, Gray=past.
+ * Manual §5: Vosotros. No emojis. Dates with day·month short format.
  */
 export const TripCard = ({ trip }) => {
-  const getStatusBadge = (status) => {
-    const normalizedStatus = status?.toLowerCase()
-    switch (normalizedStatus) {
-      case "active":
-      case "en curso":
-        return <span className="bg-brand-teal/20 text-brand-teal text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-brand-teal/30 backdrop-blur-md">En curso</span>
-      case "upcoming":
-      case "próximo":
-        return <span className="bg-brand-sun/20 text-brand-sun text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-brand-sun/30 backdrop-blur-md">Próximamente</span>
-      case "past":
-      case "finalizado":
-        return <span className="bg-white/10 text-slate-400 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/10 backdrop-blur-md">Finalizado</span>
-      default:
-        return <span className="bg-white/10 text-slate-400 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-white/10 backdrop-blur-md">{status || 'Planeado'}</span>
-    }
-  }
+  const { name, destination, start_date, end_date, status, image_url } = trip
 
-  const formatDateRange = (start, end) => {
-    if (!start) return "Fecha por definir"
-    const startObj = new Date(start)
-    const options = { day: 'numeric', month: 'short' }
-    if (!end) return startObj.toLocaleDateString('es-ES', options)
-    
-    const endObj = new Date(end)
-    return `${startObj.toLocaleDateString('es-ES', options)} - ${endObj.toLocaleDateString('es-ES', options)}`
+  /* Status badge — Manual §1 colour roles */
+  const badge = (() => {
+    switch (status?.toLowerCase()) {
+      case 'active':
+      case 'en curso':
+        return { label: 'En curso',       bg: 'bg-brand-teal-10',    text: 'text-brand-teal',  border: 'border-brand-teal/30' }
+      case 'past':
+      case 'finalizado':
+        return { label: 'Finalizado',     bg: 'bg-white/10',          text: 'text-brand-mgray', border: 'border-white/10' }
+      default:
+        return { label: 'Próximamente',   bg: 'bg-brand-sun-10',      text: 'text-brand-sun',   border: 'border-brand-sun/30' }
+    }
+  })()
+
+  const formatDate = (d) => {
+    if (!d) return '—'
+    return new Date(d).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })
   }
 
   return (
-    <Card className="glass-card group flex flex-col border-white/5 p-0 overflow-hidden h-full">
-      {/* Trip Image Header */}
-      <div className="relative h-48 overflow-hidden bg-brand-night">
-        <img 
-          src={trip.image_url || "https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1935&auto=format&fit=crop"} 
-          alt={trip.name}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-80" 
+    /* Manual §3: card 12px radius */
+    <Card className="glass-card group p-0 overflow-hidden flex flex-col">
+      {/* Cover image */}
+      <div className="relative h-44 overflow-hidden bg-brand-night/60">
+        <img
+          src={image_url || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=900&auto=format&fit=crop'}
+          alt={name}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-70 group-hover:opacity-90"
         />
-        <div className="absolute top-4 left-4 z-10">
-          {getStatusBadge(trip.status)}
+        {/* Status pill — Manual §3: 100px radius */}
+        <div className="absolute top-3 left-3">
+          <span className={`badge-pill ${badge.bg} ${badge.text} ${badge.border}`}>
+            {badge.label}
+          </span>
         </div>
-        <div className="absolute top-4 right-4 z-10">
-          <Button variant="glass" size="icon" className="w-10 h-10 rounded-xl hover:text-brand-coral border-white/10 transition-colors">
-            <Star className="w-5 h-5" />
-          </Button>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-night via-transparent to-transparent opacity-60" />
       </div>
 
-      {/* Trip Content */}
-      <div className="p-6 flex flex-col flex-grow space-y-4">
-        <h3 className="text-2xl font-display font-bold text-white group-hover:text-brand-coral transition-colors line-clamp-2 min-h-[4rem]">
-          {trip.name}
+      {/* Content */}
+      <div className="p-5 flex flex-col gap-3 flex-grow">
+        {/* Trip name — Manual §2: type-h3 */}
+        <h3 className="type-h3 text-white group-hover:text-brand-coral transition-colors line-clamp-2">
+          {name}
         </h3>
-        
-        <div className="space-y-2 font-body flex-grow">
-          <div className="flex items-center gap-3 text-slate-400 text-sm">
-            <div className="p-2 rounded-lg bg-white/5"><Calendar className="w-4 h-4 text-brand-sun" /></div>
-            <span>{formatDateRange(trip.start_date, trip.end_date)}</span>
-          </div>
-          <div className="flex items-center gap-3 text-slate-400 text-sm">
-            <div className="p-2 rounded-lg bg-white/5"><MapPin className="w-4 h-4 text-brand-teal" /></div>
-            <span className="line-clamp-1">{trip.destination || "Destino por definir"}</span>
+
+        {/* Meta — Manual §2: type-body-m, Manual §1: Gray for secondary text */}
+        <div className="flex flex-col gap-1.5">
+          {destination && (
+            <div className="flex items-center gap-2 type-body-m text-brand-mgray">
+              <MapPin className="w-3.5 h-3.5 text-brand-teal flex-shrink-0" />
+              <span className="line-clamp-1">{destination}</span>
+            </div>
+          )}
+          <div className="flex items-center gap-2 type-body-m text-brand-mgray">
+            <Calendar className="w-3.5 h-3.5 text-brand-sun flex-shrink-0" />
+            <span>{formatDate(start_date)} — {formatDate(end_date)}</span>
           </div>
         </div>
 
-        <Button variant="outline" className="w-full h-12 mt-4 rounded-xl border-white/10 bg-white/5 text-white hover:bg-brand-coral hover:border-brand-coral hover:text-white transition-all group/btn font-body">
-          Ver Detalles
-          <Plus className="ml-2 w-4 h-4 group-hover/btn:rotate-90 transition-transform" />
-        </Button>
+        {/* Footer CTA — Manual §3: 8px radius, Manual §1: Coral/White */}
+        <button className="mt-auto w-full h-10 rounded-lg bg-white/5 border border-white/10 hover:bg-brand-coral hover:border-brand-coral text-white type-label uppercase transition-all duration-200">
+          Ver detalles
+        </button>
       </div>
     </Card>
   )
