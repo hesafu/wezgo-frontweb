@@ -18,8 +18,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "Wezgo | Premium Trip Planner",
-  description: "Organize your next adventure with friends in a high-speed glassmorphism experience with Wezgo.",
+  title: "wezgo | Premium Trip Planner",
+  description: "Organize your next adventure with friends in a high-speed glassmorphism experience with wezgo.",
 };
 
 export default function RootLayout({ children }) {

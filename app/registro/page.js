@@ -11,7 +11,7 @@ import { User, Mail, Lock, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 /**
- * Registration Page - Wezgo Brand Update
+ * Registration Page - wezgo Brand Update
  */
 export default function Registro() {
   const [formData, setFormData] = useState({
@@ -73,8 +73,8 @@ export default function Registro() {
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-coral to-brand-sun" />
         
         <CardHeader 
-          title="Únete a Wezgo" 
-          subtitle="Empieza a planificar tus viajes colectivos hoy" 
+          title="Uníos a wezgo" 
+          subtitle="Empezad a planificar vuestros viajes colectivos hoy" 
           gradientTitle 
         />
 
@@ -102,34 +102,32 @@ export default function Registro() {
         </div>
 
         <form onSubmit={handleRegister} className="space-y-5">
-          <div className="space-y-3">
-            <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1 flex items-center gap-2">
-              <User className="w-3.5 h-3.5" /> Nombre completo
-            </label>
-            <Input
-              placeholder="Tu nombre"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              required
-              disabled={isLoading}
-              className="bg-white/5 border-white/10 h-14 rounded-xl text-white focus:ring-brand-coral/50"
-            />
-          </div>
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-widest text-slate-500 px-1">Vuestro nombre</label>
+              <div className="relative">
+                <Input
+                  placeholder="Ej. Alex García"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="h-14 pl-12 bg-white/5 border-white/10 rounded-xl text-white"
+                />
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+              </div>
+            </div>
 
-          <div className="space-y-3">
-            <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1 flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5" /> Correo electrónico
-            </label>
-            <Input
-              type="email"
-              placeholder="nombre@ejemplo.com"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              required
-              disabled={isLoading}
-              className="bg-white/5 border-white/10 h-14 rounded-xl text-white focus:ring-brand-coral/50"
-            />
-          </div>
+            <div className="space-y-2">
+              <label className="text-xs font-bold uppercase tracking-widest text-slate-500 px-1">Vuestro correo</label>
+              <div className="relative">
+                <Input
+                  type="email"
+                  placeholder="hola@wezgo.app"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="h-14 pl-12 bg-white/5 border-white/10 rounded-xl text-white"
+                />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+              </div>
+            </div>
 
           <div className="space-y-3">
             <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1 flex items-center gap-2">
@@ -146,8 +144,12 @@ export default function Registro() {
             />
           </div>
 
-          <Button type="submit" className="w-full h-14 mt-4 bg-brand-coral hover:bg-brand-coral/90 text-white rounded-xl shadow-lg shadow-brand-coral/20 border-0 font-bold text-base" disabled={isLoading}>
-            {isLoading ? "Creando cuenta..." : "Registrarme"}
+          <Button 
+              type="submit" 
+              disabled={isLoading}
+              className="w-full h-14 rounded-2xl bg-brand-coral hover:bg-brand-coral/90 text-white font-black text-xl shadow-2xl shadow-brand-coral/30 border-0 transition-all hover:scale-[1.02] active:scale-[0.98]"
+          >
+            {isLoading ? "Creando vuestra cuenta..." : "Crear vuestra cuenta"}
           </Button>
         </form>
 

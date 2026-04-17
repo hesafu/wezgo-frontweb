@@ -11,7 +11,7 @@ import { toast } from "react-hot-toast"
 import { Plane, User, Check, ArrowRight, Sparkles, Map } from "lucide-react"
 
 /**
- * Onboarding Page - Wezgo Brand Update
+ * Onboarding Page - wezgo Brand Update
  */
 export default function Onboarding() {
   const [step, setStep] = useState(0)
@@ -83,7 +83,7 @@ export default function Onboarding() {
 
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl font-display font-black text-white tracking-tight leading-tight">
-                Empieza tu aventura con <span className="text-brand-coral">Wezgo</span>
+                Empezad vuestra aventura con <span className="text-brand-coral">wezgo</span>
               </h1>
               <p className="text-xl text-slate-400 max-w-md mx-auto leading-relaxed">
                 La forma definitiva de organizar viajes colectivos con una experiencia premium y veloz.
@@ -95,7 +95,7 @@ export default function Onboarding() {
                     <div className="p-2.5 rounded-xl bg-brand-coral/10"><Sparkles className="w-6 h-6 text-brand-coral" /></div>
                     <div>
                         <h4 className="text-white font-bold text-sm uppercase tracking-wider">Organización con IA</h4>
-                        <p className="text-xs text-slate-500 mt-1">Planifica rutas inteligentes en segundos.</p>
+                        <p className="text-xs text-slate-500 mt-1">Planificad rutas inteligentes en segundos.</p>
                     </div>
                 </div>
                 <div className="p-5 rounded-2xl bg-white/5 border border-white/5 flex gap-4 items-start hover:bg-white/10 transition-colors">
@@ -112,7 +112,7 @@ export default function Onboarding() {
                 onClick={() => setStep(1)}
                 className="w-full py-10 text-2xl font-black bg-white text-brand-night hover:bg-brand-mist transition-all rounded-2xl group shadow-2xl shadow-white/10"
             >
-              Comenzar Configuración
+              Comenzad la Configuración
               <ArrowRight className="ml-3 w-8 h-8 group-hover:translate-x-2 transition-transform" />
             </Button>
           </div>
@@ -122,9 +122,9 @@ export default function Onboarding() {
           <div className="space-y-10 animate-in slide-in-from-right-5 duration-500">
             <div className="space-y-3 text-center md:text-left">
               <h2 className="text-4xl font-display font-black text-white flex items-center justify-center md:justify-start gap-4">
-                <User className="text-brand-coral w-10 h-10" /> Configura tu perfil
+                <User className="text-brand-coral w-10 h-10" /> Configurad vuestro perfil
               </h2>
-              <p className="text-lg text-slate-400">Dinos cómo quieres que te llamen tus amigos en Wezgo.</p>
+              <p className="text-lg text-slate-400">Decidnos cómo queréis que os llamen vuestros amigos en wezgo.</p>
             </div>
 
             <div className="space-y-8">
@@ -151,7 +151,7 @@ export default function Onboarding() {
                       <Sparkles className="w-7 h-7 text-brand-sun" />
                   </div>
                   <p className="text-sm text-brand-sun/80 leading-relaxed font-medium">
-                    <strong className="text-brand-sun block mb-1">Consejo Wezgo:</strong> 
+                    <strong className="text-brand-sun block mb-1">Consejo wezgo:</strong> 
                     Usa un nombre por el que tus amigos te reconozcan fácilmente en el chat y el mapa del viaje.
                   </p>
               </div>

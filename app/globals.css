@@ -8,6 +8,13 @@
   --color-brand-teal: #2ec4b6;
   --color-brand-mist: #f7f3ee;
   
+  /* --- Tonal Variants from Manual --- */
+  --color-brand-coral-10: #fee8e2;
+  --color-brand-coral-20: #fcc5b4;
+  --color-brand-night-10: #e8eaf0;
+  --color-brand-sun-10: #fff8e6;
+  --color-brand-teal-10: #e0f9f7;
+
   /* --- Neutrals & Grays --- */
   --color-brand-gray: #888780;
   --color-brand-lgray: #d3d1c7;
@@ -39,6 +46,11 @@
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
     @apply font-bold tracking-tight;
+  }
+
+  /* Manual rule: brand name always lowercase */
+  .brand-name {
+    text-transform: lowercase;
   }
 
   html {
