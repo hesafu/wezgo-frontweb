@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wezgo — Brand Identity Manual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Tokens ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --coral:   #F04E2A;
+  --night:   #14162E;
+  --sun:     #FFBA49;
+  --mist:    #F7F3EE;
+  --teal:    #2EC4B6;
+  --gray:    #888780;
+  --lgray:   #D3D1C7;
+  --mgray:   #B4B2A9;
+  --dgray:   #444441;
+  --white:   #ffffff;
+
+  --coral-10: #FEE8E2;
+  --coral-20: #FCC5B4;
+  --night-10: #E8EAF0;
+  --sun-10:   #FFF8E6;
+  --teal-10:  #E0F9F7;
+
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+
+  --nav-w: 220px;
+  --content-max: 820px;
+  --section-gap: 80px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--mist);
+  color: var(--night);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ── Sidebar nav ────────────────────────────────── */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--nav-w);
+  height: 100vh;
+  background: var(--night);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px 28px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.sidebar-logo .icon { flex-shrink: 0; }
+
+.sidebar-wordmark {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--white);
+  letter-spacing: -.3px;
+  line-height: 1;
+}
+
+.sidebar-subtitle {
+  font-size: 10px;
+  color: rgba(255,255,255,.35);
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 24px 0;
+  flex: 1;
+}
+
+.nav-item a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 24px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.45);
+  text-decoration: none;
+  transition: color .15s, background .15s;
+  letter-spacing: .01em;
+}
+
+.nav-item a:hover,
+.nav-item a.active {
+  color: var(--white);
+  background: rgba(255,255,255,.05);
+}
+
+.nav-item a.active { color: var(--coral); }
+
+.nav-num {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--coral);
+  min-width: 18px;
+}
+
+.sidebar-version {
+  padding: 20px 24px 0;
+  border-top: 1px solid rgba(255,255,255,.08);
+  font-size: 10px;
+  color: rgba(255,255,255,.25);
+  line-height: 1.8;
+}
+
+/* ── Main content ───────────────────────────────── */
+.main {
+  margin-left: var(--nav-w);
+  min-height: 100vh;
+}
+
+/* ── Cover section ──────────────────────────────── */
+.cover {
+  background: var(--night);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: 'W';
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 520px;
+  color: rgba(255,255,255,.025);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cover-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(240,78,42,.15);
+  border: 1px solid rgba(240,78,42,.3);
+  color: var(--coral);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  width: fit-content;
+  margin-bottom: 40px;
+}
+
+.cover-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--coral);
+  border-radius: 50%;
+}
+
+.cover-headline {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8vw, 80px);
+  color: var(--white);
+  line-height: .95;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+.cover-headline span { color: var(--coral); }
+
+.cover-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,.45);
+  font-style: italic;
+  margin-bottom: 56px;
+  max-width: 360px;
+}
+
+.cover-meta {
+  display: flex;
+  gap: 32px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 32px;
+}
+
+.cover-meta-item { }
+.cover-meta-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.3);
+  margin-bottom: 4px;
+}
+.cover-meta-val {
+  font-size: 14px;
+  color: rgba(255,255,255,.7);
+}
+
+/* ── Content sections ───────────────────────────── */
+.section {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--section-gap) 64px;
+}
+
+.section + .section {
+  border-top: 1px solid var(--lgray);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+.section-num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--coral);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding-top: 6px;
+  min-width: 28px;
+}
+
+.section-title-block { flex: 1; }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--night);
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-size: 14px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ── Sub-section labels ─────────────────────────── */
+.sub-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mgray);
+  margin-bottom: 16px;
+  margin-top: 40px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--lgray);
+}
+
+.sub-label:first-of-type { margin-top: 0; }
+
+/* ── Logo section ───────────────────────────────── */
+.logo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.logo-panel {
+  border-radius: 12px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lp-mist   { background: var(--mist); border: 1px solid var(--lgray); }
+.lp-night  { background: var(--night); }
+.lp-coral  { background: var(--coral); }
+
+.logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-wm {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: -.5px;
+  line-height: 1;
+}
+
+.logo-panel-label {
+  font-size: 11px;
+  color: var(--mgray);
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,.07);
+}
+
+.lp-night .logo-panel-label,
+.lp-coral .logo-panel-label { border-color: rgba(255,255,255,.1); color: rgba(255,255,255,.35); }
+
+/* Icon scale row */
+.icon-scale-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 28px;
+  background: var(--mist);
+  border-radius: 12px;
+  border: 1px solid var(--lgray);
+}
+
+.icon-scale-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-scale-item span {
+  font-size: 10px;
+  color: var(--mgray);
+  font-weight: 500;
+}
+
+/* Exclusion zone */
+.exclusion-demo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: var(--white);
+  border-radius: 12px;
+  border: 1px solid var(--lgray);
+}
+
+.exclusion-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: var(--mist);
+  border-radius: 8px;
+}
+
+.exclusion-box::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border: 1.5px dashed var(--coral);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.exclusion-label {
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--coral);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* ── Color section ──────────────────────────────── */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.swatch {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+
+.swatch-color {
+  height: 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+.swatch-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.swatch-hex {
+  font-size: 11px;
+  opacity: .7;
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .03em;
+}
+
+.swatch-info {
+  background: var(--white);
+  padding: 10px 12px 12px;
+}
+
+.swatch-role {
+  font-size: 11px;
+  color: var(--dgray);
+  line-height: 1.5;
+}
+
+/* Contrast pairs */
+.pairs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.pair-card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pair-demo {
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.pair-demo .aa {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.pair-demo .sm {
+  font-size: 10px;
+  opacity: .7;
+}
+
+.pair-info {
+  background: var(--mist);
+  padding: 8px 10px;
+}
+
+.pair-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--night);
+}
+
+.pair-usage {
+  font-size: 10px;
+  color: var(--gray);
+  margin-top: 2px;
+}
+
+/* Ramp */
+.ramp-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ramp-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--dgray);
+  width: 52px;
+  flex-shrink: 0;
+}
+
+.ramp-stops {
+  display: flex;
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 24px;
+}
+
+.ramp-stop { flex: 1; }
+
+/* ── Typography section ─────────────────────────── */
+.type-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.type-table th {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mgray);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--lgray);
+  text-align: left;
+}
+
+.type-table td {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--lgray);
+  vertical-align: middle;
+}
+
+.type-table tr:last-child td { border-bottom: none; }
+
+.type-meta {
+  font-size: 11px;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+.type-meta strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dgray);
+  margin-bottom: 2px;
+}
+
+/* App UI specimen */
+.ui-specimen {
+  background: var(--night);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ui-specimen::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  background: rgba(240,78,42,.08);
+  border-radius: 50%;
+}
+
+.specimen-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+.spec-tag {
+  display: inline-block;
+  background: var(--teal);
+  color: var(--night);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 12px;
+}
+
+.spec-h1 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--white);
+  letter-spacing: -.3px;
+  margin-bottom: 6px;
+}
+
+.spec-meta {
+  font-size: 13px;
+  color: rgba(255,255,255,.45);
+  margin-bottom: 4px;
+}
+
+.spec-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,.28);
+  margin-bottom: 20px;
+}
+
+.spec-cta {
+  display: inline-block;
+  background: var(--coral);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+/* ── Personality section ────────────────────────── */
+.attributes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.attr-card {
+  background: var(--white);
+  border: 1px solid var(--lgray);
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.attr-accent {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.attr-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin: 8px 0 10px;
+  letter-spacing: -.3px;
+}
+
+.attr-desc {
+  font-size: 13.5px;
+  color: var(--dgray);
+  line-height: 1.65;
+}
+
+/* Adj grid */
+.adj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.adj-box {
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+.adj-box-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.adj-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.adj-pill {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid;
+  font-weight: 500;
+}
+
+/* ── Voice & tone section ───────────────────────── */
+.voice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.voice-card {
+  background: var(--white);
+  border: 1px solid var(--lgray);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.voice-ctx {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.voice-msg {
+  font-size: 13.5px;
+  color: var(--night);
+  line-height: 1.6;
+}
+
+/* Rules list */
+.rules-list { list-style: none; }
+
+.rules-list li {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--lgray);
+  font-size: 14px;
+  align-items: flex-start;
+}
+
+.rules-list li:last-child { border-bottom: none; }
+
+.rule-bullet {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--coral);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.rule-name {
+  font-weight: 600;
+  color: var(--night);
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.rule-desc { color: var(--dgray); }
+
+/* ── Usage rules ────────────────────────────────── */
+.do-dont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.do-box, .dont-box {
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.do-box {
+  background: #F0FAF4;
+  border: 1px solid #C8EDD6;
+}
+
+.dont-box {
+  background: #FEF0EF;
+  border: 1px solid #FAC5C0;
+}
+
+.do-dont-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.do-box .do-dont-title  { color: #1D8A47; }
+.dont-box .do-dont-title { color: #C0392B; }
+
+.do-dont-list { list-style: none; }
+
+.do-dont-list li {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--dgray);
+  padding: 5px 0;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.do-mark {
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 13px;
+}
+
+.do-box .do-mark  { color: #1D8A47; }
+.dont-box .do-mark { color: #C0392B; }
+
+/* Wrong usage examples */
+.wrong-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.wrong-card {
+  border-radius: 10px;
+  background: var(--mist);
+  border: 1px solid var(--lgray);
+  padding: 16px 12px 10px;
+  text-align: center;
+  position: relative;
+}
+
+.wrong-preview {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.wrong-preview::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 6px,
+    rgba(192,57,43,.12) 6px,
+    rgba(192,57,43,.12) 7px
+  );
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.wrong-x {
+  position: absolute;
+  top: -6px; right: -6px;
+  width: 20px; height: 20px;
+  background: #C0392B;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  z-index: 1;
+}
+
+.wrong-label {
+  font-size: 11px;
+  color: var(--dgray);
+  line-height: 1.4;
+}
+
+/* Checklist */
+.checklist {
+  list-style: none;
+  background: var(--night);
+  border-radius: 12px;
+  padding: 28px 32px;
+}
+
+.checklist-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--white);
+  margin-bottom: 20px;
+  letter-spacing: -.2px;
+}
+
+.checklist li {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  color: rgba(255,255,255,.6);
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.check-box {
+  width: 16px; height: 16px;
+  border: 1.5px solid rgba(255,255,255,.2);
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Page footer ────────────────────────────────── */
+.page-footer {
+  background: var(--night);
+  color: rgba(255,255,255,.3);
+  text-align: center;
+  padding: 32px;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-left: 0;
+}
+
+.page-footer strong { color: rgba(255,255,255,.6); }
+
+/* ── Helpers ────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.chip-info {
+  background: var(--teal-10);
+  color: #0F6E56;
+}
+
+.notice {
+  background: var(--coral-10);
+  border: 1px solid var(--coral-20);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: #712B13;
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.notice strong { color: #4A1B0C; }
+
+/* Inline SVG icon */
+.icon-svg { display: inline-block; vertical-align: middle; }
+
+@media print {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  .cover { page-break-after: always; }
+  .section { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── SIDEBAR ──────────────────────────────────────── -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <svg class="icon" width="34" height="34" viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="11" fill="#F04E2A"/>
+      <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+        fill="none" stroke="white" stroke-width="4.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div>
+      <div class="sidebar-wordmark">wezgo</div>
+      <div class="sidebar-subtitle">Brand Manual</div>
+    </div>
+  </div>
+
+  <ul class="nav-list">
+    <li class="nav-item"><a href="#cover"><span class="nav-num">—</span>Portada</a></li>
+    <li class="nav-item"><a href="#logo"><span class="nav-num">01</span>Logo e icono</a></li>
+    <li class="nav-item"><a href="#color"><span class="nav-num">02</span>Paleta de color</a></li>
+    <li class="nav-item"><a href="#typo"><span class="nav-num">03</span>Tipografía</a></li>
+    <li class="nav-item"><a href="#personality"><span class="nav-num">04</span>Personalidad</a></li>
+    <li class="nav-item"><a href="#voice"><span class="nav-num">05</span>Voz y tono</a></li>
+    <li class="nav-item"><a href="#usage"><span class="nav-num">06</span>Normas de uso</a></li>
+  </ul>
+
+  <div class="sidebar-version">
+    v1.0 · 2025<br>
+    wezgo.app<br>
+    Confidential
+  </div>
+</nav>
+
+<!-- ── MAIN ─────────────────────────────────────────── -->
+<div class="main">
+
+<!-- COVER -->
+<section class="cover" id="cover">
+  <div class="cover-tag">Brand Identity Manual</div>
+  <h1 class="cover-headline">We go.<br><span>Together.</span></h1>
+  <p class="cover-sub">Everything, everywhere, with everyone.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Versión</div>
+      <div class="cover-meta-val">1.0 — 2025</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Uso</div>
+      <div class="cover-meta-val">Interno · Confidencial</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Dominio</div>
+      <div class="cover-meta-val">wezgo.app</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Contacto</div>
+      <div class="cover-meta-val">design@wezgo.app</div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 LOGO -->
+<section class="section" id="logo">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <div class="section-title-block">
+      <h2 class="section-title">Logo e icono</h2>
+      <p class="section-desc">El sistema de logo de wezgo se compone de un icono geométrico y un wordmark tipográfico. Siempre se usan en las versiones documentadas aquí.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Versiones principales</div>
+  <div class="logo-grid">
+
+    <div class="logo-panel lp-mist">
+      <div class="logo-lockup">
+        <svg width="44" height="44" viewBox="0 0 48 48">
+          <rect width="48" height="48" rx="11" fill="#F04E2A"/>
+          <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+            fill="none" stroke="white" stroke-width="4.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-wm" style="color:#14162E;">wezgo</span>
+      </div>
+      <div class="logo-panel-label">Principal — fondos claros y Mist</div>
+    </div>
+
+    <div class="logo-panel lp-night">
+      <div class="logo-lockup">
+        <svg width="44" height="44" viewBox="0 0 48 48">
+          <rect width="48" height="48" rx="11" fill="#F04E2A"/>
+          <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+            fill="none" stroke="white" stroke-width="4.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-wm" style="color:#ffffff;">wezgo</span>
+      </div>
+      <div class="logo-panel-label">Versión oscura — modo Night</div>
+    </div>
+
+    <div class="logo-panel lp-coral">
+      <div class="logo-lockup">
+        <svg width="44" height="44" viewBox="0 0 48 48">
+          <rect width="48" height="48" rx="11" fill="#14162E"/>
+          <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+            fill="none" stroke="white" stroke-width="4.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-wm" style="color:#ffffff;">wezgo</span>
+      </div>
+      <div class="logo-panel-label">Sobre coral — icono Night</div>
+    </div>
+
+    <div class="logo-panel lp-mist" style="justify-content:center; align-items:center;">
+      <span class="logo-wm" style="color:#14162E; font-size:36px;">wezgo</span>
+      <div class="logo-panel-label" style="text-align:center;">Wordmark solo — solo lectura rápida</div>
+    </div>
+  </div>
+
+  <div class="sub-label">Escala del icono</div>
+  <div class="icon-scale-row">
+    <div class="icon-scale-item">
+      <svg width="56" height="56" viewBox="0 0 48 48">
+        <rect width="48" height="48" rx="11" fill="#F04E2A"/>
+        <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+          fill="none" stroke="white" stroke-width="4.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>56 px</span>
+    </div>
+    <div class="icon-scale-item">
+      <svg width="40" height="40" viewBox="0 0 48 48">
+        <rect width="48" height="48" rx="11" fill="#F04E2A"/>
+        <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+          fill="none" stroke="white" stroke-width="4.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>40 px</span>
+    </div>
+    <div class="icon-scale-item">
+      <svg width="28" height="28" viewBox="0 0 48 48">
+        <rect width="48" height="48" rx="11" fill="#F04E2A"/>
+        <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+          fill="none" stroke="white" stroke-width="4.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>28 px</span>
+    </div>
+    <div class="icon-scale-item">
+      <svg width="20" height="20" viewBox="0 0 48 48">
+        <rect width="48" height="48" rx="11" fill="#F04E2A"/>
+        <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+          fill="none" stroke="white" stroke-width="4.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>20 px</span>
+    </div>
+    <div class="icon-scale-item">
+      <svg width="16" height="16" viewBox="0 0 48 48">
+        <rect width="48" height="48" rx="11" fill="#F04E2A"/>
+        <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+          fill="none" stroke="white" stroke-width="4.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>16 px mín.</span>
+    </div>
+    <div style="flex:1; padding-left: 20px; border-left: 1px solid #D3D1C7;">
+      <p style="font-size:13px; color:#444441; line-height:1.7;">El icono funciona de forma independiente del wordmark a partir de <strong>16 px</strong>. Por debajo de ese tamaño, usar solo el wordmark completo o representación textual. El tamaño mínimo del lockup completo es <strong>80 px de ancho</strong>.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Zona de exclusión</div>
+  <div class="exclusion-demo">
+    <div class="exclusion-box">
+      <svg width="36" height="36" viewBox="0 0 48 48">
+        <rect width="48" height="48" rx="11" fill="#F04E2A"/>
+        <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+          fill="none" stroke="white" stroke-width="4.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:24px; color:#14162E;">wezgo</span>
+      <span class="exclusion-label">← zona de exclusión = altura de la 'w' →</span>
+    </div>
+  </div>
+</section>
+
+<!-- 02 COLOR -->
+<section class="section" id="color">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <div class="section-title-block">
+      <h2 class="section-title">Paleta de color</h2>
+      <p class="section-desc">Cinco colores forman el sistema cromático de wezgo. Cada uno tiene un rol funcional específico y no son intercambiables.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Colores primarios del sistema</div>
+  <div class="color-grid">
+    <div class="swatch" style="border-color: transparent;">
+      <div class="swatch-color" style="background:#F04E2A;">
+        <div class="swatch-name" style="color:white;">Coral</div>
+        <div class="swatch-hex" style="color:white;">#F04E2A</div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-role">Color primario · CTAs · icono · acciones principales</div>
+      </div>
+    </div>
+    <div class="swatch" style="border-color: transparent;">
+      <div class="swatch-color" style="background:#14162E;">
+        <div class="swatch-name" style="color:white;">Night</div>
+        <div class="swatch-hex" style="color:white;">#14162E</div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-role">Texto principal · fondos dark · modo oscuro</div>
+      </div>
+    </div>
+    <div class="swatch" style="border-color: transparent;">
+      <div class="swatch-color" style="background:#FFBA49;">
+        <div class="swatch-name" style="color:#412402;">Sun</div>
+        <div class="swatch-hex" style="color:#412402;">#FFBA49</div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-role">Acento cálido · badges · alertas suaves · highlights</div>
+      </div>
+    </div>
+    <div class="swatch" style="border-color:#D3D1C7;">
+      <div class="swatch-color" style="background:#F7F3EE;">
+        <div class="swatch-name" style="color:#5F5E5A;">Mist</div>
+        <div class="swatch-hex" style="color:#5F5E5A;">#F7F3EE</div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-role">Fondo UI · superficies · cards · base modo claro</div>
+      </div>
+    </div>
+    <div class="swatch" style="border-color: transparent;">
+      <div class="swatch-color" style="background:#2EC4B6;">
+        <div class="swatch-name" style="color:white;">Teal</div>
+        <div class="swatch-hex" style="color:white;">#2EC4B6</div>
+      </div>
+      <div class="swatch-info">
+        <div class="swatch-role">Confirmaciones · éxito · mapas · estado activo</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Combinaciones de contraste aprobadas</div>
+  <div class="pairs-grid">
+    <div class="pair-card">
+      <div class="pair-demo" style="background:#F04E2A;">
+        <div class="aa" style="color:white; font-family:'Syne',sans-serif;">Aa</div>
+        <div class="sm" style="color:white;">wezgo</div>
+      </div>
+      <div class="pair-info">
+        <div class="pair-label">Coral / White</div>
+        <div class="pair-usage">Botones CTA primarios</div>
+      </div>
+    </div>
+    <div class="pair-card">
+      <div class="pair-demo" style="background:#14162E;">
+        <div class="aa" style="color:white; font-family:'Syne',sans-serif;">Aa</div>
+        <div class="sm" style="color:white;">wezgo</div>
+      </div>
+      <div class="pair-info">
+        <div class="pair-label">Night / White</div>
+        <div class="pair-usage">Texto sobre dark</div>
+      </div>
+    </div>
+    <div class="pair-card">
+      <div class="pair-demo" style="background:#FFBA49;">
+        <div class="aa" style="color:#412402; font-family:'Syne',sans-serif;">Aa</div>
+        <div class="sm" style="color:#412402;">wezgo</div>
+      </div>
+      <div class="pair-info">
+        <div class="pair-label">Sun / Night</div>
+        <div class="pair-usage">Badges · alertas</div>
+      </div>
+    </div>
+    <div class="pair-card">
+      <div class="pair-demo" style="background:#2EC4B6;">
+        <div class="aa" style="color:white; font-family:'Syne',sans-serif;">Aa</div>
+        <div class="sm" style="color:white;">wezgo</div>
+      </div>
+      <div class="pair-info">
+        <div class="pair-label">Teal / White</div>
+        <div class="pair-usage">Éxito · confirmado</div>
+      </div>
+    </div>
+    <div class="pair-card">
+      <div class="pair-demo" style="background:#F7F3EE; border:1px solid #D3D1C7;">
+        <div class="aa" style="color:#14162E; font-family:'Syne',sans-serif;">Aa</div>
+        <div class="sm" style="color:#14162E;">wezgo</div>
+      </div>
+      <div class="pair-info">
+        <div class="pair-label">Mist / Night</div>
+        <div class="pair-usage">Cards · fondos UI</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub-label">Escala tonal — para gradientes y estados</div>
+  <div class="ramp-row">
+    <div class="ramp-name">Coral</div>
+    <div class="ramp-stops">
+      <div class="ramp-stop" style="background:#FDEEE9;"></div>
+      <div class="ramp-stop" style="background:#F9B09A;"></div>
+      <div class="ramp-stop" style="background:#F47055;"></div>
+      <div class="ramp-stop" style="background:#F04E2A;"></div>
+      <div class="ramp-stop" style="background:#B83618;"></div>
+      <div class="ramp-stop" style="background:#7A210C;"></div>
+      <div class="ramp-stop" style="background:#3D0D03;"></div>
+    </div>
+  </div>
+  <div class="ramp-row">
+    <div class="ramp-name">Night</div>
+    <div class="ramp-stops">
+      <div class="ramp-stop" style="background:#E8EAF0;"></div>
+      <div class="ramp-stop" style="background:#9EA4BE;"></div>
+      <div class="ramp-stop" style="background:#515882;"></div>
+      <div class="ramp-stop" style="background:#14162E;"></div>
+      <div class="ramp-stop" style="background:#0D0F22;"></div>
+      <div class="ramp-stop" style="background:#070818;"></div>
+      <div class="ramp-stop" style="background:#03040E;"></div>
+    </div>
+  </div>
+  <div class="ramp-row">
+    <div class="ramp-name">Sun</div>
+    <div class="ramp-stops">
+      <div class="ramp-stop" style="background:#FFFBF0;"></div>
+      <div class="ramp-stop" style="background:#FFE9A8;"></div>
+      <div class="ramp-stop" style="background:#FFCC66;"></div>
+      <div class="ramp-stop" style="background:#FFBA49;"></div>
+      <div class="ramp-stop" style="background:#C98C1A;"></div>
+      <div class="ramp-stop" style="background:#8A5C08;"></div>
+      <div class="ramp-stop" style="background:#4A2E02;"></div>
+    </div>
+  </div>
+  <div class="ramp-row">
+    <div class="ramp-name">Teal</div>
+    <div class="ramp-stops">
+      <div class="ramp-stop" style="background:#E0F9F7;"></div>
+      <div class="ramp-stop" style="background:#96E8E3;"></div>
+      <div class="ramp-stop" style="background:#52D5CE;"></div>
+      <div class="ramp-stop" style="background:#2EC4B6;"></div>
+      <div class="ramp-stop" style="background:#1A8F85;"></div>
+      <div class="ramp-stop" style="background:#0D5E59;"></div>
+      <div class="ramp-stop" style="background:#053330;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 TYPOGRAPHY -->
+<section class="section" id="typo">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <div class="section-title-block">
+      <h2 class="section-title">Tipografía</h2>
+      <p class="section-desc">Dos familias tipográficas forman el sistema. Syne para display y titulares; Plus Jakarta Sans para cuerpo de texto e interfaz.</p>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:32px;">
+    <div style="background:#14162E; border-radius:12px; padding:28px;">
+      <div style="font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#F04E2A; margin-bottom:12px;">Display — Syne 700</div>
+      <div style="font-family:'Syne',sans-serif; font-size:36px; color:white; letter-spacing:-1px; line-height:1;">Plan.</div>
+      <div style="font-size:12px; color:rgba(255,255,255,.3); margin-top:12px;">Titulares, hero copy, wordmark</div>
+    </div>
+    <div style="background:white; border:1px solid #D3D1C7; border-radius:12px; padding:28px;">
+      <div style="font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#888780; margin-bottom:12px;">Body — Plus Jakarta Sans</div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:20px; color:#14162E; line-height:1.3;">Your crew, your trip.</div>
+      <div style="font-size:12px; color:#B4B2A9; margin-top:12px;">UI, cuerpo de texto, etiquetas</div>
+    </div>
+  </div>
+
+  <div class="sub-label">Escala tipográfica</div>
+  <table class="type-table">
+    <thead>
+      <tr>
+        <th style="width:90px;">Rol</th>
+        <th style="width:180px;">Familia / Peso</th>
+        <th style="width:70px;">Tamaño</th>
+        <th>Muestra</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="type-meta"><strong>Hero</strong>Syne · 700</div></td>
+        <td><div class="type-meta">Syne · Bold 700</div></td>
+        <td><div class="type-meta">40–48 px</div></td>
+        <td><span style="font-family:'Syne',sans-serif; font-size:40px; font-weight:700; letter-spacing:-1.5px; line-height:1; color:#14162E;">Together.</span></td>
+      </tr>
+      <tr>
+        <td><div class="type-meta"><strong>H1</strong></div></td>
+        <td><div class="type-meta">Syne · Bold 700</div></td>
+        <td><div class="type-meta">28 px</div></td>
+        <td><span style="font-family:'Syne',sans-serif; font-size:28px; font-weight:700; letter-spacing:-.8px; color:#14162E;">Plan your trip</span></td>
+      </tr>
+      <tr>
+        <td><div class="type-meta"><strong>H2</strong></div></td>
+        <td><div class="type-meta">Syne · Bold 700</div></td>
+        <td><div class="type-meta">20 px</div></td>
+        <td><span style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; letter-spacing:-.4px; color:#14162E;">Add your crew</span></td>
+      </tr>
+      <tr>
+        <td><div class="type-meta"><strong>H3</strong></div></td>
+        <td><div class="type-meta">Syne · Bold 700</div></td>
+        <td><div class="type-meta">16 px</div></td>
+        <td><span style="font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:#14162E;">July 12–19, Lisbon</span></td>
+      </tr>
+      <tr>
+        <td><div class="type-meta"><strong>Body L</strong></div></td>
+        <td><div class="type-meta">Plus Jakarta · 400</div></td>
+        <td><div class="type-meta">16 px</div></td>
+        <td><span style="font-size:16px; color:#444441;">Wezgo gestiona los gastos del grupo de forma automática.</span></td>
+      </tr>
+      <tr>
+        <td><div class="type-meta"><strong>Body M</strong></div></td>
+        <td><div class="type-meta">Plus Jakarta · 400</div></td>
+        <td><div class="type-meta">14 px</div></td>
+        <td><span style="font-size:14px; color:#444441;">3 personas han confirmado · 2 pendientes de responder.</span></td>
+      </tr>
+      <tr>
+        <td><div class="type-meta"><strong>Label</strong></div></td>
+        <td><div class="type-meta">Plus Jakarta · 600</div></td>
+        <td><div class="type-meta">11–12 px</div></td>
+        <td>
+          <span style="display:inline-flex; gap:6px; flex-wrap:wrap;">
+            <span style="background:#F04E2A; color:white; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px; border-radius:100px;">3 days left</span>
+            <span style="background:#FFBA49; color:#412402; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px; border-radius:100px;">Pending</span>
+            <span style="background:#2EC4B6; color:white; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px; border-radius:100px;">Confirmed</span>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td><div class="type-meta"><strong>Caption</strong></div></td>
+        <td><div class="type-meta">Plus Jakarta · 400</div></td>
+        <td><div class="type-meta">11 px</div></td>
+        <td><span style="font-size:11px; color:#888780;">Última actualización hace 2 minutos · 6 participantes</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sub-label">Jerarquía en contexto de app</div>
+  <div class="ui-specimen">
+    <div class="specimen-card">
+      <div class="spec-tag">Active trip</div>
+      <div class="spec-h1">Summer in Lisbon</div>
+      <div class="spec-meta">July 12–19 &nbsp;·&nbsp; 6 people &nbsp;·&nbsp; 7 nights</div>
+      <div class="spec-sub">Budget per person: €420 &nbsp;·&nbsp; Paid: €280 &nbsp;·&nbsp; Pending: €140</div>
+      <a href="#" class="spec-cta">View trip</a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PERSONALITY -->
+<section class="section" id="personality">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <div class="section-title-block">
+      <h2 class="section-title">Personalidad de marca</h2>
+      <p class="section-desc">La personalidad de wezgo es constante en todos los puntos de contacto. No cambia según el canal — solo el tono.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Atributos core</div>
+  <div class="attributes-grid">
+    <div class="attr-card">
+      <div class="attr-accent" style="background:#F04E2A;"></div>
+      <div class="attr-name">Energético</div>
+      <p class="attr-desc">wezgo habla con la energía de alguien que acaba de comprar su vuelo. Activo, nunca pasivo. El copy siempre empuja hacia la acción y hacia adelante.</p>
+    </div>
+    <div class="attr-card">
+      <div class="attr-accent" style="background:#FFBA49;"></div>
+      <div class="attr-name">Cálido</div>
+      <p class="attr-desc">Detrás de cada viaje hay amistades reales. wezgo lo sabe y lo refleja: cercano, humano, sin tecnicismos fríos ni lenguaje corporativo deshumanizado.</p>
+    </div>
+    <div class="attr-card">
+      <div class="attr-accent" style="background:#2EC4B6;"></div>
+      <div class="attr-name">Claro</div>
+      <p class="attr-desc">Si un mensaje necesita explicarse, está mal escrito. wezgo es directo. Sin jerga de producto, sin ambigüedad, sin frases de relleno que no aportan nada.</p>
+    </div>
+    <div class="attr-card">
+      <div class="attr-accent" style="background:#14162E;"></div>
+      <div class="attr-name">Confiable</div>
+      <p class="attr-desc">La logística del viaje es una responsabilidad real. wezgo genera confianza con datos precisos, estados claros y cero sorpresas desagradables para el grupo.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">wezgo ES / wezgo NO ES</div>
+  <div class="adj-grid">
+    <div class="adj-box" style="background:#F0FAF4; border:1px solid #C8EDD6;">
+      <div class="adj-box-title" style="color:#1D8A47;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#1D8A47" stroke-width="1.5"/><path d="M4 7l2 2 4-4" stroke="#1D8A47" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        wezgo ES
+      </div>
+      <ul class="adj-list">
+        <li><span class="adj-pill" style="background:#E0F4E8; border-color:#C8EDD6; color:#1D8A47;">Aventurero</span></li>
+        <li><span class="adj-pill" style="background:#E0F4E8; border-color:#C8EDD6; color:#1D8A47;">Cálido</span></li>
+        <li><span class="adj-pill" style="background:#E0F4E8; border-color:#C8EDD6; color:#1D8A47;">Directo</span></li>
+        <li><span class="adj-pill" style="background:#E0F4E8; border-color:#C8EDD6; color:#1D8A47;">Inclusivo</span></li>
+        <li><span class="adj-pill" style="background:#E0F4E8; border-color:#C8EDD6; color:#1D8A47;">Fiable</span></li>
+        <li><span class="adj-pill" style="background:#E0F4E8; border-color:#C8EDD6; color:#1D8A47;">Dinámico</span></li>
+        <li><span class="adj-pill" style="background:#E0F4E8; border-color:#C8EDD6; color:#1D8A47;">Accesible</span></li>
+        <li><span class="adj-pill" style="background:#E0F4E8; border-color:#C8EDD6; color:#1D8A47;">Humano</span></li>
+      </ul>
+    </div>
+    <div class="adj-box" style="background:#FEF0EF; border:1px solid #FAC5C0;">
+      <div class="adj-box-title" style="color:#C0392B;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#C0392B" stroke-width="1.5"/><path d="M5 5l4 4M9 5l-4 4" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"/></svg>
+        wezgo NO ES
+      </div>
+      <ul class="adj-list">
+        <li><span class="adj-pill" style="background:#FDE8E6; border-color:#FAC5C0; color:#C0392B;">Corporativo</span></li>
+        <li><span class="adj-pill" style="background:#FDE8E6; border-color:#FAC5C0; color:#C0392B;">Frío</span></li>
+        <li><span class="adj-pill" style="background:#FDE8E6; border-color:#FAC5C0; color:#C0392B;">Condescendiente</span></li>
+        <li><span class="adj-pill" style="background:#FDE8E6; border-color:#FAC5C0; color:#C0392B;">Impreciso</span></li>
+        <li><span class="adj-pill" style="background:#FDE8E6; border-color:#FAC5C0; color:#C0392B;">Aburrido</span></li>
+        <li><span class="adj-pill" style="background:#FDE8E6; border-color:#FAC5C0; color:#C0392B;">Complejo</span></li>
+        <li><span class="adj-pill" style="background:#FDE8E6; border-color:#FAC5C0; color:#C0392B;">Pretencioso</span></li>
+        <li><span class="adj-pill" style="background:#FDE8E6; border-color:#FAC5C0; color:#C0392B;">Agresivo</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 05 VOICE & TONE -->
+<section class="section" id="voice">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <div class="section-title-block">
+      <h2 class="section-title">Voz y tono</h2>
+      <p class="section-desc">La voz de wezgo es constante. El tono se adapta según el contexto emocional del usuario en cada momento.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Ejemplos de copy por contexto</div>
+  <div class="voice-grid">
+    <div class="voice-card">
+      <span class="voice-ctx" style="background:#E0F9F7; color:#0F6E56;">Onboarding</span>
+      <p class="voice-msg">¡Hola! Crea tu primer grupo de viaje y añade a tu gente. En 2 minutos estáis listos para planificar.</p>
+    </div>
+    <div class="voice-card">
+      <span class="voice-ctx" style="background:#E0F9F7; color:#0F6E56;">Confirmación</span>
+      <p class="voice-msg">Trip confirmed. Lisbon · July 12–19. Your group is all set. Time to pack.</p>
+    </div>
+    <div class="voice-card">
+      <span class="voice-ctx" style="background:#FEE8E2; color:#712B13;">Error</span>
+      <p class="voice-msg">Algo salió mal. Tus datos están seguros. Inténtalo de nuevo o escríbenos si el problema persiste.</p>
+    </div>
+    <div class="voice-card">
+      <span class="voice-ctx" style="background:#FFF8E6; color:#854F0B;">Gasto pendiente</span>
+      <p class="voice-msg">Alex añadió un gasto de €45. Revisa el resumen del grupo y confirma tu parte cuando puedas.</p>
+    </div>
+    <div class="voice-card">
+      <span class="voice-ctx" style="background:#F1EFE8; color:#5F5E5A;">Estado vacío</span>
+      <p class="voice-msg">Todavía no hay viajes. Crea el primero — elige destino, añade a tu gente y empieza a planificar.</p>
+    </div>
+    <div class="voice-card">
+      <span class="voice-ctx" style="background:#FEE8E2; color:#712B13;">Push marketing</span>
+      <p class="voice-msg">Tu grupo lleva 3 semanas sin viaje nuevo. ¿A dónde vais ahora?</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Reglas de escritura</div>
+  <ul class="rules-list">
+    <li>
+      <div class="rule-bullet"></div>
+      <div class="rule-name">Nombre</div>
+      <div class="rule-desc">Siempre <strong>'wezgo'</strong> en minúsculas. Incluso al inicio de frase cuando el diseño lo permita. Nunca 'Wezgo' ni 'WEZGO'.</div>
+    </li>
+    <li>
+      <div class="rule-bullet"></div>
+      <div class="rule-name">Persona</div>
+      <div class="rule-desc">Segunda persona del plural en español («vuestro viaje», «añadid»). Segunda singular en inglés («your trip», «add your crew»).</div>
+    </li>
+    <li>
+      <div class="rule-bullet"></div>
+      <div class="rule-name">Longitud</div>
+      <div class="rule-desc">Push notifications: máx. 60 caracteres · Toasts: máx. 40 · CTAs: máx. 3 palabras · Títulos de pantalla: máx. 5 palabras.</div>
+    </li>
+    <li>
+      <div class="rule-bullet"></div>
+      <div class="rule-name">Emojis</div>
+      <div class="rule-desc">Solo en push notifications y campañas de marketing. Nunca en interfaz funcional, mensajes de error ni estados vacíos.</div>
+    </li>
+    <li>
+      <div class="rule-bullet"></div>
+      <div class="rule-name">Internacionaliz.</div>
+      <div class="rule-desc">El inglés es el idioma base para todo el copy de producto. Todos los textos deben funcionar en traducción sin perder energía ni contexto.</div>
+    </li>
+    <li>
+      <div class="rule-bullet"></div>
+      <div class="rule-name">Cantidades</div>
+      <div class="rule-desc">Símbolo de moneda siempre antes del número: €45, $30, £20. Fechas en formato local del usuario según su configuración de idioma.</div>
+    </li>
+  </ul>
+</section>
+
+<!-- 06 USAGE RULES -->
+<section class="section" id="usage">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <div class="section-title-block">
+      <h2 class="section-title">Normas de uso</h2>
+      <p class="section-desc">Estas reglas garantizan que el logo y la identidad de wezgo mantengan su integridad en cualquier contexto de uso.</p>
+    </div>
+  </div>
+
+  <div class="sub-label">Logo — correcto / incorrecto</div>
+  <div class="do-dont">
+    <div class="do-box">
+      <div class="do-dont-title">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#1D8A47" stroke-width="1.5"/><path d="M4 7l2 2 4-4" stroke="#1D8A47" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Correcto
+      </div>
+      <ul class="do-dont-list">
+        <li><span class="do-mark">✓</span>Wordmark siempre en minúsculas: 'wezgo'</li>
+        <li><span class="do-mark">✓</span>Icono coral sobre fondos claros o blancos</li>
+        <li><span class="do-mark">✓</span>Versión blanca sobre fondos Night o Coral</li>
+        <li><span class="do-mark">✓</span>Respetar la zona de exclusión mínima</li>
+        <li><span class="do-mark">✓</span>Tamaño mínimo del lockup: 80 px de ancho</li>
+        <li><span class="do-mark">✓</span>En impresión: solo coral, night o negro puro</li>
+        <li><span class="do-mark">✓</span>Usar únicamente los archivos SVG/PNG oficiales</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <div class="do-dont-title">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#C0392B" stroke-width="1.5"/><path d="M5 5l4 4M9 5l-4 4" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Incorrecto
+      </div>
+      <ul class="do-dont-list">
+        <li><span class="do-mark">✕</span>No escribir 'Wezgo' o 'WEZGO' con mayúsculas</li>
+        <li><span class="do-mark">✕</span>No distorsionar ni cambiar proporciones</li>
+        <li><span class="do-mark">✕</span>No añadir sombras, degradados ni efectos</li>
+        <li><span class="do-mark">✕</span>No usar el logo sobre fotos sin overlay</li>
+        <li><span class="do-mark">✕</span>No cambiar los colores del icono por no aprobados</li>
+        <li><span class="do-mark">✕</span>No separar icono y wordmark en el lockup</li>
+        <li><span class="do-mark">✕</span>No rotar, inclinar ni deformar el logo</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sub-label">Normas de color</div>
+  <ul class="rules-list">
+    <li>
+      <div class="rule-bullet" style="background:#F04E2A;"></div>
+      <div class="rule-name">Color de acción</div>
+      <div class="rule-desc">El Coral (#F04E2A) es el color de acción. Solo un elemento primario por pantalla. Reservado para el CTA principal y el icono.</div>
+    </li>
+    <li>
+      <div class="rule-bullet" style="background:#2EC4B6;"></div>
+      <div class="rule-name">Color de éxito</div>
+      <div class="rule-desc">El Teal (#2EC4B6) está reservado exclusivamente para confirmaciones, viaje activo y pagos completados. No usar como decoración.</div>
+    </li>
+    <li>
+      <div class="rule-bullet" style="background:#FFBA49;"></div>
+      <div class="rule-name">Color de alerta</div>
+      <div class="rule-desc">El Sun (#FFBA49) se usa para gastos pendientes, fechas próximas y recordatorios. Nunca como fondo de pantalla completa.</div>
+    </li>
+    <li>
+      <div class="rule-bullet" style="background:#14162E;"></div>
+      <div class="rule-name">Color de base</div>
+      <div class="rule-desc">El Night (#14162E) es el único color aprobado para tipografía primaria sobre Mist y como fondo del modo oscuro.</div>
+    </li>
+    <li>
+      <div class="rule-bullet" style="background:#D3D1C7;"></div>
+      <div class="rule-name">No mezclar</div>
+      <div class="rule-desc">No crear combinaciones de color no documentadas sin aprobación del equipo de diseño. No usar grises intermedios como base en modo oscuro.</div>
+    </li>
+  </ul>
+
+  <div class="sub-label">Checklist de aprobación</div>
+  <ul class="checklist">
+    <div class="checklist-title">Antes de publicar cualquier pieza con el logo de wezgo</div>
+    <li><div class="check-box"></div>¿Está el logo en la versión correcta para el fondo (claro / oscuro / coral)?</li>
+    <li><div class="check-box"></div>¿Se respeta la zona de exclusión en todos los lados?</li>
+    <li><div class="check-box"></div>¿El tamaño mínimo es 80 px (lockup) o 16 px (icono solo)?</li>
+    <li><div class="check-box"></div>¿El wordmark está en minúsculas en todos los casos?</li>
+    <li><div class="check-box"></div>¿Los colores del logo son exclusivamente los aprobados en este manual?</li>
+    <li><div class="check-box"></div>¿El archivo usado es el SVG o PNG de alta resolución oficial?</li>
+    <li><div class="check-box"></div>¿Ha revisado el documento alguien del equipo de diseño antes de publicar?</li>
+  </ul>
+</section>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div style="display:inline-flex; align-items:center; gap:10px; margin-bottom:12px;">
+    <svg width="24" height="24" viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="11" fill="#F04E2A"/>
+      <polyline points="9,33 16.5,15 24,27.5 31.5,15 39,33"
+        fill="none" stroke="white" stroke-width="4.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <strong style="color:rgba(255,255,255,.6); font-family:'Syne',sans-serif; font-size:16px;">wezgo</strong>
+  </div>
+  <div>Brand Identity Manual · v1.0 · 2025</div>
+  <div>wezgo.app &nbsp;·&nbsp; design@wezgo.app</div>
+  <div style="margin-top:8px; font-size:11px;">Documento confidencial de uso interno. Todos los derechos reservados © 2025 wezgo.</div>
+</footer>
+
+</div><!-- /.main -->
+
+<script>
+const navLinks = document.querySelectorAll('.nav-item a');
+const sections = document.querySelectorAll('section[id], footer');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`.nav-item a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

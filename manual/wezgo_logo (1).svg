@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160">
+  <title>wezgo — Logo variants</title>
+  <defs>
+    <style>
+      .label { font-family: Helvetica, Arial, sans-serif; font-size: 9px; fill: #888780; }
+    </style>
+  </defs>
+
+  <!-- ── Variant 1: Primary (coral icon + night wordmark) ── -->
+  <!-- Icon -->
+  <rect x="20" y="20" width="60" height="60" rx="14" fill="#F04E2A"/>
+  <polyline points="29,66 40.5,34 50,52 59.5,34 71,66"
+    fill="none" stroke="white" stroke-width="5.5"
+    stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Wordmark -->
+  <text x="92" y="59" font-family="Helvetica, Arial, sans-serif"
+    font-weight="700" font-size="38" fill="#14162E" letter-spacing="-1">wezgo</text>
+  <text x="20" y="98" class="label">Primary — light backgrounds</text>
+
+  <!-- ── Variant 2: Dark mode (coral icon + white wordmark) on night bg ── -->
+  <rect x="20" y="114" width="220" height="80" rx="10" fill="#14162E"/>
+  <rect x="32" y="127" width="54" height="54" rx="12" fill="#F04E2A"/>
+  <polyline points="41,168 51.5,139 60,155 68.5,139 79,168"
+    fill="none" stroke="white" stroke-width="5"
+    stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="99" y="162" font-family="Helvetica, Arial, sans-serif"
+    font-weight="700" font-size="34" fill="white" letter-spacing="-1">wezgo</text>
+
+  <!-- ── Variant 3: Icon only — coral ── -->
+  <rect x="260" y="20" width="60" height="60" rx="14" fill="#F04E2A"/>
+  <polyline points="269,66 280.5,34 290,52 299.5,34 311,66"
+    fill="none" stroke="white" stroke-width="5.5"
+    stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="260" y="98" class="label">Icon — coral</text>
+
+  <!-- ── Variant 4: Icon only — night ── -->
+  <rect x="340" y="20" width="60" height="60" rx="14" fill="#14162E"/>
+  <polyline points="349,66 360.5,34 370,52 379.5,34 391,66"
+    fill="none" stroke="white" stroke-width="5.5"
+    stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="340" y="98" class="label">Icon — night</text>
+
+  <!-- ── Variant 5: Icon only — white (shown on coral bg) ── -->
+  <rect x="415" y="20" width="50" height="50" rx="12" fill="#F04E2A"/>
+  <rect x="415" y="20" width="50" height="50" rx="12" fill="#F04E2A"/>
+  <polyline points="424,56 432.5,29 440,43 447.5,29 456,56"
+    fill="none" stroke="white" stroke-width="4.5"
+    stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="409" y="86" class="label">App icon</text>
+
+</svg>
